@@ -1,3 +1,3 @@
-# csc307-react-app
+# Todo List
 
-Author: Sam Todd
+Authors:
