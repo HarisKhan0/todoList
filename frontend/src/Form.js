@@ -27,14 +27,14 @@ function Form(props) {
 
     return (
         <form>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Tasks</label>
         <input
             type="text"
             name="name"
             id="name"
             value={person.name}
             onChange={handleChange} />
-        <label htmlFor="job">Job</label>
+        <label htmlFor="job">Day</label>
         <input
             type="text"
             name="job"
