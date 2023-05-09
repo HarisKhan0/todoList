@@ -4,9 +4,9 @@ function TableHeader()  {
     return (
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Job</th>
-                <th>ID</th>
+                <th>Task Name</th>
+                <th>Description</th>
+                <th>Task Identifier</th>
             </tr>
         </thead>
     );
