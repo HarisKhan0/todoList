@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 function Form(props) {
   const [person, setPerson] = useState(
@@ -42,6 +43,7 @@ function Form(props) {
             value={person.job}
             onChange={handleChange} />
         <input type="button" value="Submit" onClick={submitForm} />
+        <Link to="/table">View Table</Link>
         </form>
     );
 }
