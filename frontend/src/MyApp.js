@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Table from './Table';
 import Form from './Form';
 import axios from 'axios';
@@ -70,10 +71,16 @@ function MyApp() {
   }
 
   return (
-    <div className="container">
-      <Table characterData={characters} removeCharacter={removeOneCharacter} />
-      <Form handleSubmit={updateList} />
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <Routes>
+          <Route path = "/table" element={<Table characterData={characters} removeCharacter={removeOneCharacter} />}>
+          </Route>
+          <Route path = "/form" element={<Form handleSubmit={updateList} />}>
+          </Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
