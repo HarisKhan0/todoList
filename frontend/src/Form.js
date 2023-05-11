@@ -5,8 +5,8 @@ function Form(props) {
   //new task object 
   const [Task, setTask] = useState(
         {
-            name: "",
-            description: "",
+            task_name: "",
+            task_description: "",
             days: "",
             difficulty: "",
             stress_rating: "",
@@ -14,32 +14,71 @@ function Form(props) {
     );
 
     function handleChange(event) {
-        const { name, value } = event.target;
-        switch (name) {
-          case "description":
-            setTask({ ...Task, description: value });
-            break;
-          case "days":
-            setTask({ ...Task, days: parseInt(value) });
-            break;
-          case "difficulty":
-            setTask({ ...Task, difficulty: parseInt(value) });
-            break;
-          case "stress_rating":
-            setTask({ ...Task, stress_rating: parseInt(value) });
-            break;
-          default:
-            setTask({ ...Task, [name]: value });
-        }
+      const { name, value } = event.target;
+      if (name === "task_name"){ 
+        setTask({
+          ...Task, 
+          task_name: value
+        });
+      }
+      else if(name === "task_description"){ 
+        setTask({
+          ...Task, 
+          task_description: value
+        });
+      }
+      else if(name === "days"){ 
+        setTask({
+          ...Task, 
+          days: value
+        });
+      }
+      else if(name === "difficulty"){ 
+        setTask({
+          ...Task, 
+          difficulty: value
+        });
+      }
+      else if(name === "stress_rating"){ 
+        setTask({
+          ...Task, 
+          stress_rating: value
+        });
+      }
     }
+      
+
+
+
+    //     switch (name) {
+    //       case "description":
+    //         setTask({ ...Task, description: value });
+    //         break;
+    //       case "days":
+    //         setTask({ ...Task, days: parseInt(value) });
+    //         break;
+    //       case "difficulty":
+    //         setTask({ ...Task, difficulty: parseInt(value) });
+    //         break;
+    //       case "stress_rating":
+    //         setTask({ ...Task, stress_rating: parseInt(value) });
+    //         break;
+    //       default:
+    //         setTask({ ...Task, [name]: value });
+    //     }
+    // }
 
 
     // function handleChange(event) {
-    //     const { name, value } = event.target;
-    //     if (name === "description")
-    //         setTask(
-    //             {name: Task['name'], description: value}
-    //         );
+    //   const { name, value } = event.target;
+    //   if (name === "task_name")
+    //     setTask({name: Task['task_name'], description: value});
+    //   else if (name === "description")
+    //     setTask({name: Task['description'], description: value});
+    //   else if (name === "description")
+    //     setTask({name: Task['description'], description: value});
+
+
     //     else     
     //         setTask(
     //             {name: value, description: Task['description']}   
@@ -56,18 +95,18 @@ function Form(props) {
 
     return (
         <form>
-        <label htmlFor="name">Task Name</label>
+        <label htmlFor="task_name">Task Name</label>
         <input
             type="text"
-            name="name"
-            id="name"
+            name="task_name"
+            id="task_name"
             value={Task.name}
             onChange={handleChange} />
-        <label htmlFor="description">Task Description</label>
+        <label htmlFor="task_description">Task Description</label>
         <input
             type="text"
-            name="description"
-            id="description"
+            name="task_description"
+            id="task_description"
             value={Task.description}
             onChange={handleChange} />
         <label htmlFor="days">How many days is the task due in/when would you like to have this done?</label>
