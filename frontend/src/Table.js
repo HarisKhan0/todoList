@@ -42,9 +42,9 @@ function Table (props) {
         <table>
             <TableHeader />
             <TableBody characterData={props.characterData} removeCharacter={props.removeCharacter} />
-            <Link to="/form"><button>Add Person</button></Link>
+            <Link to="/form"><button>Create New Task</button></Link>
         </table>
     );
-}  
+}
 
 export default Table;

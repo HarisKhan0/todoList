@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Table from './Table';
 import Form from './Form';
 import axios from 'axios';
@@ -74,10 +74,9 @@ function MyApp() {
     <BrowserRouter>
       <div className="container">
         <Routes>
-          <Route path = "/table" element={<Table characterData={characters} removeCharacter={removeOneCharacter} />}>
-          </Route>
-          <Route path = "/form" element={<Form handleSubmit={updateList} />}>
-          </Route>
+          <Route path = "/" element={<Link to="/table"><button>Enter ListIt</button></Link>}></Route>
+          <Route path = "/table" element={<Table characterData={characters} removeCharacter={removeOneCharacter} />}></Route>
+          <Route path = "/form" element={<Form handleSubmit={updateList} />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
