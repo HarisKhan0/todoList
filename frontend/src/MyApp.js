@@ -31,7 +31,7 @@ function MyApp() {
   async function fetchAll(){
     try {
        const response = await axios.get('http://localhost:8000/users');
-       return response.data.users_list;     
+       return response.data.task_list;     
     }
     catch (error){
        //We're not handling errors. Just logging into the console.

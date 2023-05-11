@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const userModel = require("./user");
+const taskModel = require("./user");
 mongoose.set("debug", true);
 
 mongoose
@@ -9,63 +9,64 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-async function getUsers(name, job) {
+async function getTasks(task_name, task_description) {
   let result;
-  if (name === undefined && job === undefined) {
-    result = await userModel.find();
-  } else if (name && !job) {
-    result = await findUserByName(name);
-  } else if (job && !name) {
-    result = await findUserByJob(job);
+  if (task_name === undefined && task_description === undefined) {
+    result = await taskModel.find();
+  } else if (task_name && !task_description) {
+    result = await findTaskByName(task_name);
+  } else if (task_description && !task_name) {
+    result = await findTaskByDescription(task_description);
   }
   else{
-    result = await findUserByNameAndJob(name, job);
+    result = await findTaskByNameAndDescription(task_name, task_description);
   }
   return result;
 }
 
-async function findUserById(id) {
+async function findById(id) {
   try {
-    return await userModel.findById(id);
+    return await taskModel.findById(id);
   } catch (error) {
     console.log(error);
     return undefined;
   }
 }
 
-async function findUserByName(name) {
-  return await userModel.find({ name: name });
+async function findTaskByName(task_name) {
+  return await taskModel.find({ task_name: task_name });
 }
 
-async function findUserByJob(job) {
-  return await userModel.find({ job: job });
+async function findTaskByDescription(task_description) {
+  return await taskModel.find({ task_description: task_description });
 }
 
-async function findUserByNameAndJob(name, job) {
-  return await userModel.find({ name: name, job: job });
+async function findTaskByNameAndDescription(task_name, task_description) {
+  return await taskModel.find({ task_name: task_name, description: task_description });
 }
 
-async function addUser(user) {
+async function addTask(task) {
   try {
-    const userToAdd = new userModel(user);
-    const savedUser = await userToAdd.save();
-    return savedUser;
+    const taskToAdd = new taskModel(task);
+    const savedTask = await taskToAdd.save();
+    // const savedTask = await userServices.addTask(task);
+    return savedTask;
   } catch (error) {
     console.log(error);
     return false;
   }
 }
 
-async function deleteUserById(id) {
+async function deleteTaskById(id) {
   try {
-    return await userModel.findByIdAndDelete(id);
+    return await taskModel.findByIdAndDelete(id);
   } catch (error) {
     console.log(error);
     return undefined;
   }
 }
 
-exports.getUsers = getUsers;
-exports.findUserById = findUserById;
-exports.addUser = addUser;
-exports.deleteUserById = deleteUserById;
+exports.getTasks = getTasks;
+exports.findById = findById;
+exports.addTask = addTask;
+exports.deleteTaskById = deleteTaskById;
