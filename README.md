@@ -1,7 +1,8 @@
 # Todo List
 
-##Authors: Sam Todd, Winton Gee, Hamza Aziz, Haris Khan, Bill Chan 
+### Contributors: Sam Todd, Winton Gee, Hamza Aziz, Haris Khan, Bill Chan 
 
+## Style Guide:
 
 Filenames: lower snake case
 
