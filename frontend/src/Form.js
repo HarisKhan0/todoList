@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 function Form(props) {
 
@@ -124,7 +125,6 @@ function Form(props) {
             id="difficulty"
             value={Task.difficulty}
             onChange={handleChange} />
-
         <label htmlFor="stress_rating">How stressed is this task making you feel on a scale of 1 to 10?</label>
         <input
             type="text"
@@ -134,6 +134,7 @@ function Form(props) {
             onChange={handleChange} />  
 
         <input type="button" value="Add New Task" onClick={(event) => submitForm(event)} />
+        <Link to="/table"><button>View Table</button></Link>
         </form>
     );
 }
