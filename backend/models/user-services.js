@@ -9,22 +9,22 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-async function getUsers(task_name, task_description) {
+async function getTasks(task_name, task_description) {
   let result;
   if (task_name === undefined && task_description === undefined) {
     result = await taskModel.find();
   } else if (task_name && !task_description) {
-    result = await findUserByName(task_name);
+    result = await findTaskByName(task_name);
   } else if (task_description && !task_name) {
-    result = await findUserByJob(task_description);
+    result = await findTaskByDescription(task_description);
   }
   else{
-    result = await findUserByNameAndJob(task_name, task_description);
+    result = await findTaskByNameAndDescription(task_name, task_description);
   }
   return result;
 }
 
-async function findUserById(id) {
+async function findById(id) {
   try {
     return await taskModel.findById(id);
   } catch (error) {
@@ -33,22 +33,23 @@ async function findUserById(id) {
   }
 }
 
-async function findUserByName(name) {
-  return await taskModel.find({ task_name: name });
+async function findTaskByName(task_name) {
+  return await taskModel.find({ task_name: task_name });
 }
 
-async function findUserByJob(job) {
-  return await taskModel.find({ task_description: job });
+async function findTaskByDescription(task_description) {
+  return await taskModel.find({ task_description: task_description });
 }
 
-async function findUserByNameAndJob(name, job) {
-  return await taskModel.find({ task_name: name, description: job });
+async function findTaskByNameAndDescription(task_name, task_description) {
+  return await taskModel.find({ task_name: task_name, description: task_description });
 }
 
 async function addTask(task) {
   try {
     const taskToAdd = new taskModel(task);
     const savedTask = await taskToAdd.save();
+    // const savedTask = await userServices.addTask(task);
     return savedTask;
   } catch (error) {
     console.log(error);
@@ -56,7 +57,7 @@ async function addTask(task) {
   }
 }
 
-async function deleteUserById(id) {
+async function deleteTaskById(id) {
   try {
     return await taskModel.findByIdAndDelete(id);
   } catch (error) {
@@ -65,7 +66,7 @@ async function deleteUserById(id) {
   }
 }
 
-exports.getUsers = getUsers;
-exports.findUserById = findUserById;
-exports.addUser = addUser;
-exports.deleteUserById = deleteUserById;
+exports.getTasks = getTasks;
+exports.findById = findById;
+exports.addTask = addTask;
+exports.deleteTaskById = deleteTaskById;

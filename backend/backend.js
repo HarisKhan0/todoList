@@ -17,7 +17,7 @@ app.get('/users', async (req, res) => {
     const name = req.query['name'];
     const description = req.query['description'];
     try {
-        const result = await userServices.getUsers(name, description);
+        const result = await userServices.getTasks(name, description);
         res.send({task_list: result});         
     } catch (error) {
         console.log(error);
@@ -27,7 +27,7 @@ app.get('/users', async (req, res) => {
 
 app.get('/users/:id', async (req, res) => {
     const id = req.params['id'];
-    const result = await userServices.findUserById(id);
+    const result = await userServices.findById(id);
     if (result === undefined || result === null)
         res.status(404).send('Resource not found.');
     else {
@@ -40,15 +40,15 @@ app.post('/users', async (req, res) => {
     const task = req.body;
     //should work?
     const savedTask = await userServices.addTask(task);
-    if (savedUser)
-        res.status(201).send(savedUser);
+    if (savedTask)
+        res.status(201).send(savedTask);
     else
         res.status(500).end();
 });
 
 app.delete('/users/:id', async (req, res) => {
     const id = req.params['id'];
-    const result = await userServices.deleteUserById(id);
+    const result = await userServices.deleteTaskById(id);
     if (result === undefined || result === null)
         res.status(404).send('Resource not found.');
     else {
