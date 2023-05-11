@@ -15,10 +15,10 @@ app.get('/', (req, res) => {
 
 app.get('/users', async (req, res) => {
     const name = req.query['name'];
-    const job = req.query['job'];
+    const description = req.query['description'];
     try {
-        const result = await userServices.getUsers(name, job);
-        res.send({users_list: result});         
+        const result = await userServices.getTasks(name, description);
+        res.send({task_list: result});         
     } catch (error) {
         console.log(error);
         res.status(500).send('An error ocurred in the server.');
@@ -27,26 +27,28 @@ app.get('/users', async (req, res) => {
 
 app.get('/users/:id', async (req, res) => {
     const id = req.params['id'];
-    const result = await userServices.findUserById(id);
+    const result = await userServices.findById(id);
     if (result === undefined || result === null)
         res.status(404).send('Resource not found.');
     else {
-        res.send({users_list: result});
+        res.send({task_list: result});
     }
 });
 
 app.post('/users', async (req, res) => {
-    const user = req.body;
-    const savedUser = await userServices.addUser(user);
-    if (savedUser)
-        res.status(201).send(savedUser);
+    //adding task 
+    const task = req.body;
+    //should work?
+    const savedTask = await userServices.addTask(task);
+    if (savedTask)
+        res.status(201).send(savedTask);
     else
         res.status(500).end();
 });
 
 app.delete('/users/:id', async (req, res) => {
     const id = req.params['id'];
-    const result = await userServices.deleteUserById(id);
+    const result = await userServices.deleteTaskById(id);
     if (result === undefined || result === null)
         res.status(404).send('Resource not found.');
     else {
