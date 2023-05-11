@@ -8,7 +8,7 @@ Filenames: lower snake case
 
 Component: upper snake case
 
-Comment Style: double backslash (\\)
+Comment Style: double slash (//)
 
 Curly Braces: Curly braces on the same line (K&R style (OTBS))
 
