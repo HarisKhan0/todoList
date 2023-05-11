@@ -40,7 +40,7 @@ function Table (props) {
         <table>
             <TableHeader />
             <TableBody characterData={props.characterData} removeCharacter={props.removeCharacter} />
-            <Link to="/form">View Form</Link>
+            <Link to="/form"><button>Add Person</button></Link>
         </table>
     );
 }  

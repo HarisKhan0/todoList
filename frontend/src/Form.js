@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
 function Form(props) {
-  const [person, setPerson] = useState(
+    const [person, setPerson] = useState(
         {
             name: "",
             job: "",
@@ -43,7 +43,7 @@ function Form(props) {
             value={person.job}
             onChange={handleChange} />
         <input type="button" value="Submit" onClick={submitForm} />
-        <Link to="/table">View Table</Link>
+        <Link to="/table"><button>View Table</button></Link>
         </form>
     );
 }
