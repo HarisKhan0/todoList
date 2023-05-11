@@ -16,12 +16,13 @@ app.get('/', (req, res) => {
 app.get('/users', async (req, res) => {
     const name = req.query['name'];
     const job = req.query['job'];
+    const newInput2 = req.query['newInput2'];
     try {
-        const result = await userServices.getUsers(name, job);
+        const result = await userServices.getUsers(name, job, newInput2);
         res.send({users_list: result});         
     } catch (error) {
         console.log(error);
-        res.status(500).send('An error ocurred in the server.');
+        res.status(500).send('An error occurred in the server.');
     }
 });
 
