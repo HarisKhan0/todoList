@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema(
+const TaskSchema = new mongoose.Schema(
   {
-    name: {
+    task_name: {
       type: String,
       required: true,
       trim: true,
     },
-    job: {
+    task_description: {
       type: String,
       required: true,
       trim: true,
@@ -16,10 +16,22 @@ const UserSchema = new mongoose.Schema(
           throw new Error("Invalid job, must be at least 2 characters.");
       },
     },
+    days: {
+      type: Number,
+      required: true,
+    },
+    difficulty: {
+      type: Number,
+      required: true,
+    },
+    stress_rating: {
+      type: Number,
+      required: true,
+    },
   },
-  { collection: "users_list" }
+  { collection: "task_list" }
 );
 
-const User = mongoose.model("User", UserSchema);
+const Task = mongoose.model("Task", TaskSchema);
 
-module.exports = User;
+module.exports = Task;

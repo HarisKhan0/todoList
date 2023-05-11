@@ -15,10 +15,10 @@ app.get('/', (req, res) => {
 
 app.get('/users', async (req, res) => {
     const name = req.query['name'];
-    const job = req.query['job'];
+    const description = req.query['description'];
     try {
-        const result = await userServices.getUsers(name, job);
-        res.send({users_list: result});         
+        const result = await userServices.getUsers(name, description);
+        res.send({task_list: result});         
     } catch (error) {
         console.log(error);
         res.status(500).send('An error ocurred in the server.');
@@ -31,13 +31,15 @@ app.get('/users/:id', async (req, res) => {
     if (result === undefined || result === null)
         res.status(404).send('Resource not found.');
     else {
-        res.send({users_list: result});
+        res.send({task_list: result});
     }
 });
 
 app.post('/users', async (req, res) => {
-    const user = req.body;
-    const savedUser = await userServices.addUser(user);
+    //adding task 
+    const task = req.body;
+    //should work?
+    const savedTask = await userServices.addTask(task);
     if (savedUser)
         res.status(201).send(savedUser);
     else

@@ -15,18 +15,43 @@ function Form(props) {
 
     function handleChange(event) {
         const { name, value } = event.target;
-        if (name === "description")
-            setTask(
-                {name: Task['name'], description: value}
-            );
-        else     
-            setTask(
-                {name: value, description: Task['description']}   
-            );
+        switch (name) {
+          case "description":
+            setTask({ ...Task, description: value });
+            break;
+          case "days":
+            setTask({ ...Task, days: parseInt(value) });
+            break;
+          case "difficulty":
+            setTask({ ...Task, difficulty: parseInt(value) });
+            break;
+          case "stress_rating":
+            setTask({ ...Task, stress_rating: parseInt(value) });
+            break;
+          default:
+            setTask({ ...Task, [name]: value });
+        }
     }
-    function submitForm() {
+
+
+    // function handleChange(event) {
+    //     const { name, value } = event.target;
+    //     if (name === "description")
+    //         setTask(
+    //             {name: Task['name'], description: value}
+    //         );
+    //     else     
+    //         setTask(
+    //             {name: value, description: Task['description']}   
+    //         );
+    // }
+
+
+
+    function submitForm(event) {
+        event.preventDefault();
         props.handleSubmit(Task);
-        setTask({name: '', description: '', days: '', difficulty: '', stress_rating: ''});
+        setTask({ name: '', description: '', days: 0, difficulty: 0, stress_rating: 0 });
     }
 
     return (
@@ -69,7 +94,7 @@ function Form(props) {
             value={Task.stress_rating}
             onChange={handleChange} />  
 
-        <input type="button" value="Add New Task" onClick={submitForm} />
+        <input type="button" value="Add New Task" onClick={(event) => submitForm(event)} />
         </form>
     );
 }
@@ -129,3 +154,18 @@ export default Form;
 // }
 
 // export default Form;
+
+
+
+
+    // function handleChange(event) {
+    //     const { name, value } = event.target;
+    //     if (name === "description")
+    //         setTask(
+    //             {name: Task['name'], description: value}
+    //         );
+    //     else     
+    //         setTask(
+    //             {name: value, description: Task['description']}   
+    //         );
+    // }

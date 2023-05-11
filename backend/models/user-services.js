@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const userModel = require("./user");
+const taskModel = require("./user");
 mongoose.set("debug", true);
 
 mongoose
@@ -9,24 +9,24 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-async function getUsers(name, job) {
+async function getUsers(task_name, task_description) {
   let result;
-  if (name === undefined && job === undefined) {
-    result = await userModel.find();
-  } else if (name && !job) {
-    result = await findUserByName(name);
-  } else if (job && !name) {
-    result = await findUserByJob(job);
+  if (task_name === undefined && task_description === undefined) {
+    result = await taskModel.find();
+  } else if (task_name && !task_description) {
+    result = await findUserByName(task_name);
+  } else if (task_description && !task_name) {
+    result = await findUserByJob(task_description);
   }
   else{
-    result = await findUserByNameAndJob(name, job);
+    result = await findUserByNameAndJob(task_name, task_description);
   }
   return result;
 }
 
 async function findUserById(id) {
   try {
-    return await userModel.findById(id);
+    return await taskModel.findById(id);
   } catch (error) {
     console.log(error);
     return undefined;
@@ -34,22 +34,22 @@ async function findUserById(id) {
 }
 
 async function findUserByName(name) {
-  return await userModel.find({ name: name });
+  return await taskModel.find({ task_name: name });
 }
 
 async function findUserByJob(job) {
-  return await userModel.find({ job: job });
+  return await taskModel.find({ task_description: job });
 }
 
 async function findUserByNameAndJob(name, job) {
-  return await userModel.find({ name: name, job: job });
+  return await taskModel.find({ task_name: name, description: job });
 }
 
-async function addUser(user) {
+async function addTask(task) {
   try {
-    const userToAdd = new userModel(user);
-    const savedUser = await userToAdd.save();
-    return savedUser;
+    const taskToAdd = new taskModel(task);
+    const savedTask = await taskToAdd.save();
+    return savedTask;
   } catch (error) {
     console.log(error);
     return false;
@@ -58,7 +58,7 @@ async function addUser(user) {
 
 async function deleteUserById(id) {
   try {
-    return await userModel.findByIdAndDelete(id);
+    return await taskModel.findByIdAndDelete(id);
   } catch (error) {
     console.log(error);
     return undefined;
