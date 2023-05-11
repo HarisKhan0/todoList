@@ -1,6 +1,6 @@
 # Todo List
 
-Authors: Sam Todd, Winton Gee, Hamza Aziz, Haris Khan, Bill Chan 
+##Authors: Sam Todd, Winton Gee, Hamza Aziz, Haris Khan, Bill Chan 
 
 
 Filenames: lower snake case
@@ -25,4 +25,4 @@ npm init @eslint/config
 Commands for installing Style Checker:
 
 Instructions for installing IDE instructons: 
-Followed Canvas instructions for ESLint and then installed VSCode extention locally. 
+Followed Canvas instructions for ESLint and then installed VSCode extenion locally. 
