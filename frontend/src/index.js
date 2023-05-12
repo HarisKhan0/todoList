@@ -1,9 +1,9 @@
-import React from 'react'
-import ReactDOMClient from 'react-dom/client'
-import MyApp from './MyApp'
-import './index.css'
+import React from "react";
+import ReactDOMClient from "react-dom/client";
+import MyApp from "./MyApp";
+import "./index.css";
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 
 // Create a root
 
