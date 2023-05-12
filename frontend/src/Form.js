@@ -133,7 +133,7 @@ function Form(props) {
             value={Task.stress_rating}
             onChange={handleChange} />  
 
-        <input type="button" value="Add New Task" onClick={(event) => submitForm(event)} />
+        <input type="button" value="Add Task" onClick={(event) => submitForm(event)} />
         <Link to="/table"><button>View Table</button></Link>
         </form>
     );
