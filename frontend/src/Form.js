@@ -11,15 +11,15 @@ function Form(props) {
 
     function handleChange(event) {
       const { name, value } = event.target;
-      if (name === "job") {
-        setPerson({
-          ...person,
-          job: value
-        });
-      } else if (name === "name") {
+      if (name === "name") {
         setPerson({
           ...person,
           name: value
+        });
+      } else if (name === "job") {
+        setPerson({
+          ...person,
+          job: value
         });
       } else if (name === "newInput2") {
         setPerson({
