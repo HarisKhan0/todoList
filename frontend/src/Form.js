@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-                
+
 function Form(props) {
 
   //new task object 
@@ -134,7 +134,7 @@ function Form(props) {
             onChange={handleChange} />  
 
         <input type="button" value="Add Task" onClick={(event) => submitForm(event)} />
-        <Link to="/table"><button>View Table</button></Link>
+        <Link to="/table"><button>View Todo List</button></Link>
         </form>
     );
 }
