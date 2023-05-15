@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Table from './Table';
 import Form from './Form';
 import axios from 'axios';
@@ -31,7 +32,7 @@ function MyApp() {
   async function fetchAll(){
     try {
        const response = await axios.get('http://localhost:8000/users');
-       return response.data.users_list;     
+       return response.data.task_list;     
     }
     catch (error){
        //We're not handling errors. Just logging into the console.
@@ -70,10 +71,15 @@ function MyApp() {
   }
 
   return (
-    <div className="container">
-      <Table characterData={characters} removeCharacter={removeOneCharacter} />
-      <Form handleSubmit={updateList} />
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <Routes>
+          <Route path = "/" element={<Link to="/table"><button>Enter ListIt</button></Link>}></Route>
+          <Route path = "/table" element={<Table characterData={characters} removeCharacter={removeOneCharacter} />}></Route>
+          <Route path = "/form" element={<Form handleSubmit={updateList} />}></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
