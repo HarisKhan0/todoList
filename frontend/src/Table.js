@@ -1,48 +1,51 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
-function TableHeader()  {
-    return (
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Job</th>
-                <th>ID</th>
-                <th>NewInput2</th>
-            </tr>
-        </thead>
-    );
+function TableHeader() {
+  return (
+    <thead>
+      <tr>
+        <th>Task Name</th>
+        <th>Description</th>
+        <th>Due In (# of days)</th>
+        <th>Task Identifier</th>
+      </tr>
+    </thead>
+  );
 }
 
 function TableBody(props) {
-    const rows = props.characterData.map(
-        (row, index) => {
-            return (
-                <tr key={index}>
-                    <td>{row.name}</td>
-                    <td>{row.job}</td>
-                    <td>{row._id}</td>
-                    <td>{row.newInput2}</td>
-                    <td>
-                        <button onClick={() => props.removeCharacter(index)}>Delete</button>
-                    </td>
-                </tr>
-            );
-        }
-    );
+  const rows = props.characterData.map((row, index) => {
     return (
-        <tbody>
-            {rows}
-        </tbody>
+      <tr key={index}>
+        <td>{row.task_name}</td>
+        <td>{row.task_description}</td>
+        <td>{row.days}</td>
+        <td>{row._id}</td>
+        <td>
+          <button onClick={() => props.removeCharacter(index)}>
+            Remove Task
+          </button>
+        </td>
+      </tr>
     );
+  });
+  return <tbody>{rows}</tbody>;
 }
 
-function Table (props) {
-    return (
-        <table>
-            <TableHeader />
-            <TableBody characterData={props.characterData} removeCharacter={props.removeCharacter} />
-        </table>
-    );
-}  
+function Table(props) {
+  return (
+    <table>
+      <TableHeader />
+      <TableBody
+        characterData={props.characterData}
+        removeCharacter={props.removeCharacter}
+      />
+      <Link to="/form">
+        <button>Create New Task</button>
+      </Link>
+    </table>
+  );
+}
 
 export default Table;
