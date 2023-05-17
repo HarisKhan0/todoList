@@ -1,72 +1,68 @@
-import React, {useState, useEffect} from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Table from './Table';
-import Form from './Form';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Table from "./Table";
+import Form from "./Form";
+import axios from "axios";
 
 function MyApp() {
-  const [characters, setCharacters] = useState([]);  
+  const [characters, setCharacters] = useState([]);
 
-  function removeOneCharacter (index) {
+  function removeOneCharacter(index) {
     const deletedUser = characters.find((character, i) => {
-      return i === index
+      return i === index;
     });
 
-    makeDeleteCall(deletedUser._id).then( result => {
-      if (result && result.status === 204){
+    makeDeleteCall(deletedUser._id).then((result) => {
+      if (result && result.status === 204) {
         const updated = characters.filter((character, i) => {
-          return i !== index
+          return i !== index;
         });
         setCharacters(updated);
       }
     });
   }
 
-  function updateList(person) { 
-    makePostCall(person).then( result => {
+  function updateList(person) {
+    makePostCall(person).then((result) => {
       if (result && result.status === 201)
-        setCharacters([...characters, result.data] );
+        setCharacters([...characters, result.data]);
     });
   }
 
-  async function fetchAll(){
+  async function fetchAll() {
     try {
-       const response = await axios.get('http://localhost:8000/users');
-       return response.data.task_list;     
-    }
-    catch (error){
-       //We're not handling errors. Just logging into the console.
-       console.log(error); 
-       return false;         
+      const response = await axios.get("http://localhost:8000/users");
+      return response.data.task_list;
+    } catch (error) {
+      //We're not handling errors. Just logging into the console.
+      console.log(error);
+      return false;
     }
   }
 
   useEffect(() => {
-    fetchAll().then( result => {
-       if (result)
-          setCharacters(result);
-     });
-  }, [] );
+    fetchAll().then((result) => {
+      if (result) setCharacters(result);
+    });
+  }, []);
 
-  async function makePostCall(person){
+  async function makePostCall(person) {
     try {
-       const response = await axios.post('http://localhost:8000/users', person);
-       return response;
-    }
-    catch (error) {
-       console.log(error);
-       return false;
+      const response = await axios.post("http://localhost:8000/users", person);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
     }
   }
 
-  async function makeDeleteCall(_id){
+  async function makeDeleteCall(_id) {
     try {
-       const response = await axios.delete(`http://localhost:8000/users/${_id}`);
-       return response;
-    }
-    catch (error) {
-       console.log(error);
-       return false;
+      const response = await axios.delete(`http://localhost:8000/users/${_id}`);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
     }
   }
 
@@ -74,13 +70,31 @@ function MyApp() {
     <BrowserRouter>
       <div className="container">
         <Routes>
-          <Route path = "/" element={<Link to="/table"><button>Enter ListIt</button></Link>}></Route>
-          <Route path = "/table" element={<Table characterData={characters} removeCharacter={removeOneCharacter} />}></Route>
-          <Route path = "/form" element={<Form handleSubmit={updateList} />}></Route>
+          <Route
+            path="/"
+            element={
+              <Link to="/table">
+                <button>Enter ListIt</button>
+              </Link>
+            }
+          ></Route>
+          <Route
+            path="/table"
+            element={
+              <Table
+                characterData={characters}
+                removeCharacter={removeOneCharacter}
+              />
+            }
+          ></Route>
+          <Route
+            path="/form"
+            element={<Form handleSubmit={updateList} />}
+          ></Route>
         </Routes>
       </div>
     </BrowserRouter>
-  )
+  );
 }
 
 export default MyApp;

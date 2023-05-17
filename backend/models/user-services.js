@@ -55,7 +55,10 @@ async function findTaskByDescription(task_description) {
 }
 
 async function findTaskByNameAndDescription(task_name, task_description) {
-  return await taskModel.find({ task_name: task_name, description: task_description });
+  return await taskModel.find({
+    task_name: task_name,
+    description: task_description,
+  });
 }
 
 async function addTask(task) {

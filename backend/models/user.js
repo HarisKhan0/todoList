@@ -30,28 +30,25 @@ const TaskSchema = new mongoose.Schema(
     },
     priority: {
       type: Number,
-      required: false
-    }
+      required: false,
+    },
   },
   { collection: "task_list" }
 );
 
-TaskSchema.pre("save", function(next) {
+TaskSchema.pre("save", function (next) {
   this.priority = this.calculatePriority();
   next();
 });
 
-TaskSchema.methods.calculatePriority = function() {
-  return (this.difficulty + this.stress_rating) - (this.days);
+TaskSchema.methods.calculatePriority = function () {
+  return this.difficulty + this.stress_rating - this.days;
 };
 
-TaskSchema.statics.sortPriority = function(callback) {
+TaskSchema.statics.sortPriority = function (callback) {
   return this.find({}).sort({ priority: -1 }).exec(callback);
 };
-
 
 const Task = mongoose.model("Task", TaskSchema);
 
 module.exports = Task;
-
-

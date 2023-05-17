@@ -23,5 +23,6 @@
     "eslint-plugin-react": "^7.32.2",
     "nodemon": "^2.0.22",
     "prettier": "^2.8.8"
-  }
+  },
+  "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
 }
