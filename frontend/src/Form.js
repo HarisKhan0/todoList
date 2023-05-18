@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Form(props) {
-  //new task object
   const [Task, setTask] = useState({
+    user: "Filler User",
     task_name: "",
     task_description: "",
     days: "",
@@ -21,7 +21,7 @@ function Form(props) {
 
   function submitForm(event) {
     event.preventDefault();
-    props.handleSubmit(Task);
+    props.handleSubmitTask(Task);
     setTask({
       name: "",
       description: "",

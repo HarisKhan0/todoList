@@ -9,6 +9,7 @@ function TaskListHeader() {
         <th>Description</th>
         <th>Due In (# of days)</th>
         <th>Task Identifier</th>
+        <th>User</th>
       </tr>
     </thead>
   );
@@ -22,6 +23,7 @@ function TaskListBody(props) {
         <td>{row.task_description}</td>
         <td>{row.days}</td>
         <td>{row._id}</td>
+        <td>{row.user}</td>
         <td>
           <button onClick={() => props.removeCharacter(index)}>
             Remove Task

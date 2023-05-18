@@ -8,7 +8,7 @@ import Form from "./Form";
 import Login from "./Login";
 
 function MyApp() {
-  const [characters, setCharacters] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   async function fetchAll() {
     try {
@@ -41,12 +41,12 @@ function MyApp() {
   }
 
   function removeOneCharacter(index) {
-    const deletedTask = characters.find((character, i) => i === index);
+    const deletedTask = tasks.find((character, i) => i === index);
 
     makeDeleteCall(deletedTask._id).then((result) => {
       if (result && result.status === 204) {
-        const updated = characters.filter((character, i) => i !== index);
-        setCharacters(updated);
+        const updated = tasks.filter((character, i) => i !== index);
+        setTasks(updated);
       }
     });
   }
@@ -54,7 +54,7 @@ function MyApp() {
   function updateList(person) {
     makePostCall(person).then((result) => {
       if (result && result.status === 201) {
-        setCharacters([...characters, result.data]);
+        setTasks([...tasks, result.data]);
       }
     });
   }
@@ -62,7 +62,7 @@ function MyApp() {
   useEffect(() => {
     fetchAll().then((result) => {
       if (result) {
-        setCharacters(result);
+        setTasks(result);
       }
     });
   }, []);
@@ -71,12 +71,15 @@ function MyApp() {
     <BrowserRouter>
       <div className="container">
         <Routes>
-          <Route path="/" element={<Login handleSubmit={updateList} />}></Route>
+          <Route
+            path="/"
+            element={<Login handleSubmitTask={updateList} />}
+          ></Route>
           <Route
             path="/TaskList"
             element={
               <TaskList
-                characterData={characters}
+                characterData={tasks}
                 removeCharacter={removeOneCharacter}
               />
             }
@@ -85,14 +88,14 @@ function MyApp() {
             path="/CredentialList"
             element={
               <CredentialList
-                characterData={characters}
+                characterData={tasks}
                 removeCharacter={removeOneCharacter}
               />
             }
           ></Route>
           <Route
             path="/form"
-            element={<Form handleSubmit={updateList} />}
+            element={<Form handleSubmitTask={updateList} />}
           ></Route>
         </Routes>
       </div>
