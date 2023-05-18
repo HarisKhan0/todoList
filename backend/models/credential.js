@@ -17,6 +17,8 @@ const credentialSchema = new mongoose.Schema(
   { collection: "credential_list" }
 );
 
+// TODO save?
+
 const Credential = mongoose.model("Credential", credentialSchema);
 
 module.exports = Credential;
