@@ -21,7 +21,7 @@ app.get("/users", async (req, res) => {
     res.send({ task_list: result });
   } catch (error) {
     console.log(error);
-    res.status(500).send("An error ocurred in the server.");
+    res.status(500).send("An error occurred in the server.");
   }
 });
 
@@ -36,9 +36,7 @@ app.get("/users/:id", async (req, res) => {
 });
 
 app.post("/users", async (req, res) => {
-  //adding task
   const task = req.body;
-  //should work?
   const savedTask = await userServices.addTask(task);
   if (savedTask) res.status(201).send(savedTask);
   else res.status(500).end();
