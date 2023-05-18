@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function TableHeader() {
+function TaskListHeader() {
   return (
     <thead>
       <tr>
@@ -14,7 +14,7 @@ function TableHeader() {
   );
 }
 
-function TableBody(props) {
+function TaskListBody(props) {
   const rows = props.characterData.map((row, index) => {
     return (
       <tr key={index}>
@@ -33,11 +33,11 @@ function TableBody(props) {
   return <tbody>{rows}</tbody>;
 }
 
-function Table(props) {
+function TaskList(props) {
   return (
     <table>
-      <TableHeader />
-      <TableBody
+      <TaskListHeader />
+      <TaskListBody
         characterData={props.characterData}
         removeCharacter={props.removeCharacter}
       />
@@ -48,4 +48,4 @@ function Table(props) {
   );
 }
 
-export default Table;
+export default TaskList;

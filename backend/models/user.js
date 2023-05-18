@@ -1,30 +1,56 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema(
+const TaskSchema = new mongoose.Schema(
   {
-    name: {
+    task_name: {
       type: String,
       required: true,
       trim: true,
     },
-    job: {
+    task_description: {
       type: String,
       required: true,
       trim: true,
       validate(value) {
         if (value.length < 2)
-          throw new Error("Invalid job, must be at least 2 characters.");
+          throw new Error(
+            "Invalid Task Description, must be at least 2 characters."
+          );
       },
     },
-    newInput2: {
-          type: String,
-          required: true,
-          trim: true,
-        },
+    days: {
+      type: Number,
+      required: true,
+    },
+    difficulty: {
+      type: Number,
+      required: true,
+    },
+    stress_rating: {
+      type: Number,
+      required: true,
+    },
+    priority: {
+      type: Number,
+      required: false,
+    },
   },
-  { collection: "users_list" }
+  { collection: "task_list" }
 );
 
-const User = mongoose.model("User", UserSchema);
+TaskSchema.pre("save", function (next) {
+  this.priority = this.calculatePriority();
+  next();
+});
 
-module.exports = User;
+TaskSchema.methods.calculatePriority = function () {
+  return this.difficulty + this.stress_rating - this.days;
+};
+
+TaskSchema.statics.sortPriority = function (callback) {
+  return this.find({}).sort({ priority: -1 }).exec(callback);
+};
+
+const Task = mongoose.model("Task", TaskSchema);
+
+module.exports = Task;

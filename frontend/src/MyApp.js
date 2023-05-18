@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Table from "./Table";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TaskList from "./TaskList";
 import Form from "./Form";
+import Login from "./Login";
 import axios from "axios";
 
 function MyApp() {
@@ -70,18 +71,11 @@ function MyApp() {
     <BrowserRouter>
       <div className="container">
         <Routes>
+          <Route path="/" element={<Login handleSubmit={updateList} />}></Route>
           <Route
-            path="/"
+            path="/TaskList"
             element={
-              <Link to="/table">
-                <button>Enter ListIt</button>
-              </Link>
-            }
-          ></Route>
-          <Route
-            path="/table"
-            element={
-              <Table
+              <TaskList
                 characterData={characters}
                 removeCharacter={removeOneCharacter}
               />

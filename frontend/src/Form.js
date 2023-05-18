@@ -108,7 +108,7 @@ function Form(props) {
         value="Add Task"
         onClick={(event) => submitForm(event)}
       />
-      <Link to="/table">
+      <Link to="/TaskList">
         <button>View Todo List</button>
       </Link>
     </form>
