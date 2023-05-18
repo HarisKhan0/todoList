@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Table from './Table';
 import Form from './Form';
 import axios from 'axios';
+import Home from "./Home";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function MyApp() {
   const [characters, setCharacters] = useState([]);  
@@ -41,6 +44,7 @@ function MyApp() {
     }
   }
 
+
   useEffect(() => {
     fetchAll().then( result => {
        if (result)
@@ -71,15 +75,17 @@ function MyApp() {
   }
 
   return (
-    <BrowserRouter>
-      <div className="container">
-        <Routes>
-          <Route path = "/" element={<Link to="/table"><button>Enter ListIt</button></Link>}></Route>
-          <Route path = "/table" element={<Table characterData={characters} removeCharacter={removeOneCharacter} />}></Route>
-          <Route path = "/form" element={<Form handleSubmit={updateList} />}></Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <div className= "Login-Signup"> 
+        <BrowserRouter>
+          <div className="container">
+            <Routes>
+              <Route path = "/" element = {<Home/>} />
+              <Route path = "/table" element={<Table characterData={characters} removeCharacter={removeOneCharacter} />}></Route>
+              <Route path = "/form" element={<Form handleSubmit={updateList} />}></Route>
+            </Routes>
+          </div>
+        </BrowserRouter>
+    </div>
   )
 }
 
