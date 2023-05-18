@@ -13,17 +13,10 @@ function Login(props) {
 
   function handleChange(event) {
     const { name, value } = event.target;
-    if (name === "username") {
-      setCredentials({
-        ...credentials,
-        username: value,
-      });
-    } else if (name === "password") {
-      setCredentials({
-        ...credentials,
-        password: value,
-      });
-    }
+    setCredentials({
+      ...credentials,
+      [name]: value,
+    });
   }
 
   function submitLogin(event) {

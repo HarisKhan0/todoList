@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const taskModel = require("./user");
+const taskModel = require("./task");
 mongoose.set("debug", true);
 
 mongoose
-  .connect("mongodb://127.0.0.1/users", {
+  .connect("mongodb://127.0.0.1/tasks", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -23,9 +23,9 @@ async function getTasks(task_name, task_description) {
   return result;
 }
 
-async function findById(id) {
+async function findTaskById(id) {
   try {
-    return await taskModel.findById(id);
+    return await taskModel.findTaskById(id);
   } catch (error) {
     console.log(error);
     return undefined;
@@ -51,7 +51,6 @@ async function addTask(task) {
   try {
     const taskToAdd = new taskModel(task);
     const savedTask = await taskToAdd.save();
-    // const savedTask = await userServices.addTask(task);
     return savedTask;
   } catch (error) {
     console.log(error);
@@ -69,6 +68,6 @@ async function deleteTaskById(id) {
 }
 
 exports.getTasks = getTasks;
-exports.findById = findById;
+exports.findTaskById = findTaskById;
 exports.addTask = addTask;
 exports.deleteTaskById = deleteTaskById;

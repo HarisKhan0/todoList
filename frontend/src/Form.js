@@ -13,32 +13,10 @@ function Form(props) {
 
   function handleChange(event) {
     const { name, value } = event.target;
-    if (name === "task_name") {
-      setTask({
-        ...Task,
-        task_name: value,
-      });
-    } else if (name === "task_description") {
-      setTask({
-        ...Task,
-        task_description: value,
-      });
-    } else if (name === "days") {
-      setTask({
-        ...Task,
-        days: value,
-      });
-    } else if (name === "difficulty") {
-      setTask({
-        ...Task,
-        difficulty: value,
-      });
-    } else if (name === "stress_rating") {
-      setTask({
-        ...Task,
-        stress_rating: value,
-      });
-    }
+    setTask({
+      ...Task,
+      [name]: value,
+    });
   }
 
   function submitForm(event) {

@@ -9,11 +9,11 @@ function MyApp() {
   const [characters, setCharacters] = useState([]);
 
   function removeOneCharacter(index) {
-    const deletedUser = characters.find((character, i) => {
+    const deletedTask = characters.find((character, i) => {
       return i === index;
     });
 
-    makeDeleteCall(deletedUser._id).then((result) => {
+    makeDeleteCall(deletedTask._id).then((result) => {
       if (result && result.status === 204) {
         const updated = characters.filter((character, i) => {
           return i !== index;
@@ -32,7 +32,7 @@ function MyApp() {
 
   async function fetchAll() {
     try {
-      const response = await axios.get("http://localhost:8000/users");
+      const response = await axios.get("http://localhost:8000/tasks");
       return response.data.task_list;
     } catch (error) {
       //We're not handling errors. Just logging into the console.
@@ -49,7 +49,7 @@ function MyApp() {
 
   async function makePostCall(person) {
     try {
-      const response = await axios.post("http://localhost:8000/users", person);
+      const response = await axios.post("http://localhost:8000/tasks", person);
       return response;
     } catch (error) {
       console.log(error);
@@ -59,7 +59,7 @@ function MyApp() {
 
   async function makeDeleteCall(_id) {
     try {
-      const response = await axios.delete(`http://localhost:8000/users/${_id}`);
+      const response = await axios.delete(`http://localhost:8000/tasks/${_id}`);
       return response;
     } catch (error) {
       console.log(error);
