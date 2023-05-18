@@ -39,7 +39,7 @@ function Login(props) {
       } else {
         setLoginStatus("Invalid username or password.");
       }
-    }, 5000);
+    }, 1500);
   }
 
   function submitCreateAccount(event) {
@@ -53,7 +53,7 @@ function Login(props) {
         username: "",
         password: "",
       });
-    }, 5000);
+    }, 1500);
   }
 
   return (
