@@ -51,7 +51,7 @@ app.post("/tasks", async (req, res) => {
 
 // Deletes a task with id
 app.delete("/tasks/:id", async (req, res) => {
-  const id = req.params["_id"];
+  const id = req.params["id"];
   const result = await taskServices.deleteTaskById(id);
   if (result === undefined || result === null)
     res.status(404).send("Resource not found.");
