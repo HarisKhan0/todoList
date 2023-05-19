@@ -9,25 +9,17 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-async function getCredentials(username) {
-  let result;
-  result = await findCredentialsByUsername(username);
-  return result;
+// Returns all credentials
+async function getCredentials() {
+  return await credentialModel.find();
 }
 
-async function findById(id) {
-  try {
-    return await credentialModel.findById(id);
-  } catch (error) {
-    console.log(error);
-    return undefined;
-  }
-}
-
+// Returns credential with username, used for creating unique username accounts
 async function findCredentialsByUsername(username) {
   return await credentialModel.find({ username: username });
 }
 
+// Stores a credential
 async function addCredential(credential) {
   try {
     const credentialToAdd = new credentialModel(credential);
@@ -49,6 +41,5 @@ async function deleteCredentialById(id) {
 }
 
 exports.getCredentials = getCredentials;
-exports.findById = findById;
 exports.addCredential = addCredential;
 exports.deleteCredentialById = deleteCredentialById;

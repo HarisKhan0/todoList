@@ -9,8 +9,10 @@ import Login from "./Login";
 
 function MyApp() {
   const [tasks, setTasks] = useState([]);
+  const [credentials, setCredentials] = useState([]);
 
-  async function fetchAll() {
+  // Getting all tasks through backend
+  async function fetchAllTasks() {
     try {
       const response = await axios.get("http://localhost:8000/tasks");
       return response.data.task_list;
@@ -20,9 +22,21 @@ function MyApp() {
     }
   }
 
-  async function makePostCall(person) {
+  // Getting all credentials through backend
+  async function fetchAllCredentials() {
     try {
-      const response = await axios.post("http://localhost:8000/tasks", person);
+      const response = await axios.get("http://localhost:8000/credentials");
+      return response.data.credential_list;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  // Adding a task through backend
+  async function makeTaskPostCall(task) {
+    try {
+      const response = await axios.post("http://localhost:8000/tasks", task);
       return response;
     } catch (error) {
       console.log(error);
@@ -30,7 +44,22 @@ function MyApp() {
     }
   }
 
-  async function makeDeleteCall(_id) {
+  // Adding a credential through backend
+  async function makeCredentialPostCall(credential) {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/credentials",
+        credential
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  // Delete a task through backend
+  async function makeTaskDeleteCall(_id) {
     try {
       const response = await axios.delete(`http://localhost:8000/tasks/${_id}`);
       return response;
@@ -40,10 +69,24 @@ function MyApp() {
     }
   }
 
-  function removeOneCharacter(index) {
+  // Delete a credential through backend
+  async function makeCredentialDeleteCall(_id) {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8000/credentials/${_id}`
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  // Remove task at the given index
+  function removeOneTask(index) {
     const deletedTask = tasks.find((character, i) => i === index);
 
-    makeDeleteCall(deletedTask._id).then((result) => {
+    makeTaskDeleteCall(deletedTask._id).then((result) => {
       if (result && result.status === 204) {
         const updated = tasks.filter((character, i) => i !== index);
         setTasks(updated);
@@ -51,18 +94,49 @@ function MyApp() {
     });
   }
 
-  function updateList(person) {
-    makePostCall(person).then((result) => {
+  // Remove credential at the given index
+  function removeOneCredential(index) {
+    const deletedCredential = credentials.find((character, i) => i === index);
+
+    makeCredentialDeleteCall(deletedCredential._id).then((result) => {
+      if (result && result.status === 204) {
+        const updated = credentials.filter((character, i) => i !== index);
+        setCredentials(updated);
+      }
+    });
+  }
+
+  // Stores a task
+  function updateTaskList(task) {
+    makeTaskPostCall(task).then((result) => {
       if (result && result.status === 201) {
         setTasks([...tasks, result.data]);
       }
     });
   }
 
+  // Stores a task
+  function updateCredentialList(credential) {
+    makeCredentialPostCall(credential).then((result) => {
+      if (result && result.status === 201) {
+        setCredentials([...credentials, result.data]);
+      }
+    });
+  }
+
   useEffect(() => {
-    fetchAll().then((result) => {
+    // Updating tasks
+    fetchAllTasks().then((result) => {
       if (result) {
         setTasks(result);
+      }
+    });
+
+    // TODO check if there is a better way to implement this?
+    // Updating Credentials
+    fetchAllCredentials().then((result) => {
+      if (result) {
+        setCredentials(result);
       }
     });
   }, []);
@@ -73,29 +147,24 @@ function MyApp() {
         <Routes>
           <Route
             path="/"
-            element={<Login handleSubmitTask={updateList} />}
+            element={<Login handleSubmitCredential={updateCredentialList} />}
           ></Route>
           <Route
             path="/TaskList"
-            element={
-              <TaskList
-                characterData={tasks}
-                removeCharacter={removeOneCharacter}
-              />
-            }
+            element={<TaskList taskData={tasks} removeTask={removeOneTask} />}
           ></Route>
           <Route
             path="/CredentialList"
             element={
               <CredentialList
-                characterData={tasks}
-                removeCharacter={removeOneCharacter}
+                credentialData={credentials}
+                removeCredential={removeOneCredential}
               />
             }
           ></Route>
           <Route
             path="/form"
-            element={<Form handleSubmitTask={updateList} />}
+            element={<Form handleSubmitTask={updateTaskList} />}
           ></Route>
         </Routes>
       </div>

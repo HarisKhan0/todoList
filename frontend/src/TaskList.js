@@ -17,7 +17,7 @@ function TaskListHeader() {
 }
 
 function TaskListBody(props) {
-  const rows = props.characterData.map((row, index) => {
+  const rows = props.taskData.map((row, index) => {
     return (
       <tr key={index}>
         <td>{row.task_name}</td>
@@ -27,9 +27,7 @@ function TaskListBody(props) {
         <td>{row.user}</td>
         <td>{row._id}</td>
         <td>
-          <button onClick={() => props.removeCharacter(index)}>
-            Remove Task
-          </button>
+          <button onClick={() => props.removeTask(index)}>Remove Task</button>
         </td>
       </tr>
     );
@@ -41,10 +39,7 @@ function TaskList(props) {
   return (
     <table>
       <TaskListHeader />
-      <TaskListBody
-        characterData={props.characterData}
-        removeCharacter={props.removeCharacter}
-      />
+      <TaskListBody taskData={props.taskData} removeTask={props.removeTask} />
       <Link to="/form">
         <button>Create New Task</button>
       </Link>

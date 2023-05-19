@@ -31,7 +31,7 @@ function Login(props) {
 
       if (isLoggedIn) {
         setLoginStatus("Login successful!");
-        props.handleSubmitTask(credentials);
+        props.handleSubmitCredential(credentials); // TODO change to login handleSubmitLogin
         setCredentials({
           username: "",
           password: "",
@@ -50,7 +50,7 @@ function Login(props) {
       // TODO check if the username is unique
 
       setLoginStatus("Account created!");
-      props.handleSubmitTask(credentials);
+      props.handleSubmitCredential(credentials);
       setCredentials({
         username: "",
         password: "",

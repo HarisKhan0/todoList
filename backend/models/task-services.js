@@ -9,34 +9,12 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-//async function getTasks(task_name, task_description) {
-//  let result;
-//  if (task_name === undefined && task_description === undefined) {
-//    result = await taskModel.find().sort({ priority: -1 });
-//  } else if (task_name && !task_description) {
-//    result = await findTaskByName(task_name);
-//  } else if (task_description && !task_name) {
-//    result = await findTaskByDescription(task_description);
-//  } else {
-//    result = await findTaskByNameAndDescription(task_name, task_description);
-//  }
-//  return result;
-//}
-
-async function getTasks(task_name, task_description) {
-  let result;
-  if (task_name === undefined && task_description === undefined) {
-    result = await taskModel.find().sort({ priority: -1 });
-  } else if (task_name && !task_description) {
-    result = await findTaskByName(task_name);
-  } else if (task_description && !task_name) {
-    result = await findTaskByDescription(task_description);
-  } else {
-    result = await findTaskByNameAndDescription(task_name, task_description);
-  }
-  return result;
+// Gets all tasks in sorted priority
+async function getTasks() {
+  return await taskModel.find().sort({ priority: -1 });
 }
 
+// Return a task with id
 async function findTaskById(id) {
   try {
     return await taskModel.findTaskById(id);
@@ -46,21 +24,7 @@ async function findTaskById(id) {
   }
 }
 
-async function findTaskByName(task_name) {
-  return await taskModel.find({ task_name: task_name });
-}
-
-async function findTaskByDescription(task_description) {
-  return await taskModel.find({ task_description: task_description });
-}
-
-async function findTaskByNameAndDescription(task_name, task_description) {
-  return await taskModel.find({
-    task_name: task_name,
-    description: task_description,
-  });
-}
-
+// Stores a task
 async function addTask(task) {
   try {
     const taskToAdd = new taskModel(task);

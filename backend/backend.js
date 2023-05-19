@@ -15,7 +15,7 @@ app.get("/credentials", async (req, res) => {
   const username = req.query["username"];
   const password = req.query["password"];
   try {
-  // TODO change this to grab credentials
+    // TODO change this to grab credentials
     const result = await credentialServices.getCredentials(username, password);
     res.send({ credential_list: result });
   } catch (error) {
@@ -26,10 +26,8 @@ app.get("/credentials", async (req, res) => {
 
 // Gets all tasks
 app.get("/tasks", async (req, res) => {
-  const name = req.query["task_name"];
-  const description = req.query["task_description"];
   try {
-    const result = await taskServices.getTasks(name, description);
+    const result = await taskServices.getTasks();
     res.send({ task_list: result });
   } catch (error) {
     console.log(error);
@@ -47,7 +45,17 @@ app.post("/tasks", async (req, res) => {
   else res.status(500).end();
 });
 
-// TODO Deletes a credential with id
+// TODO test this
+// Deletes a credential with id
+app.delete("/credentials/:id", async (req, res) => {
+  const id = req.params["id"];
+  const result = await credentialServices.deleteCredentialById(id);
+  if (result === undefined || result === null)
+    res.status(404).send("Resource not found.");
+  else {
+    res.status(204).end();
+  }
+});
 
 // Deletes a task with id
 app.delete("/tasks/:id", async (req, res) => {
