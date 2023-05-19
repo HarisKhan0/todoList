@@ -127,20 +127,27 @@ function MyApp() {
   // TODO this is not working, "filter is not a function"
   //    fetchAllCredentials is not returning an array?
   // Checks if login credentials is valid
-  function isCredentialValid(credentialToCheck) {
+  async function isCredentialValid(credentialToCheck) {
     try {
-      const credentials = fetchAllCredentials();
+      const credentials = await fetchAllCredentials();
 
-      if (!credentials) return false;
+      if (!credentials) {
+        return false;
+      }
 
-      return (
-        credentials.filter((credential) => {
-          return (
-            credential.username === credentialToCheck.username &&
-            credential.password === credentialToCheck.password
-          );
-        }).length > 0
-      );
+      console.log(credentials);
+
+      const isValid = credentials.some((credential) => {
+        //        console.log(credential);
+        return (
+          credential.username === credentialToCheck.username &&
+          credential.password === credentialToCheck.password
+        );
+      });
+
+      console.log("IsValid: " + isValid);
+
+      return isValid;
     } catch (error) {
       console.log(error);
       return false;

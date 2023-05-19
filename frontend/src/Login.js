@@ -22,15 +22,20 @@ function Login(props) {
   function submitLogin(event) {
     event.preventDefault();
     setLoginStatus("Logging in...");
-    console.log("Checking Credentials");
-    setTimeout(() => {
-      console.log(props.isCredentialValid(Credential));
-      if (props.isCredentialValid(Credential)) {
-        setLoginStatus("Login successful!");
-      } else {
-        setLoginStatus("Invalid username or password.");
-      }
-    }, 1500);
+    props
+      .isCredentialValid(Credential)
+      .then((isCredentialValid) => {
+        if (isCredentialValid) {
+          setLoginStatus("Login successful!");
+          // TODO store the username, used for creating new tasks, change to different page
+        } else {
+          setLoginStatus("Invalid username or password.");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoginStatus("An error occurred while logging in.");
+      });
   }
 
   function submitCreateAccount(event) {
