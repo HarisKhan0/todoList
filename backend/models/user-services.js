@@ -1,10 +1,17 @@
-const mongoose = require("mongoose");
 const taskModel = require("./user");
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+
 mongoose.set("debug", true);
 
+dotenv.config();
+
+// Uncomment the following to debug mongoose queries, etc.
+//mongoose.set("debug", true);
+
 mongoose
-  .connect("mongodb://127.0.0.1/users", {
-    useNewUrlParser: true,
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true, //useFindAndModify: false,
     useUnifiedTopology: true,
   })
   .catch((error) => console.log(error));
