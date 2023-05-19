@@ -32,8 +32,6 @@ app.get("/credentials", async (req, res) => {
   }
 });
 
-// TODO Stores a credential
-
 // Stores a task
 app.post("/tasks", async (req, res) => {
   const task = req.body;
@@ -42,7 +40,6 @@ app.post("/tasks", async (req, res) => {
   else res.status(500).end();
 });
 
-// TODO test this
 // Stores a credential
 app.post("/credentials", async (req, res) => {
   const credential = req.body;

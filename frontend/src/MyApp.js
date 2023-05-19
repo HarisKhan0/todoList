@@ -115,7 +115,7 @@ function MyApp() {
     });
   }
 
-  // Stores a task
+  // Stores a credential
   function updateCredentialList(credential) {
     makeCredentialPostCall(credential).then((result) => {
       if (result && result.status === 201) {
