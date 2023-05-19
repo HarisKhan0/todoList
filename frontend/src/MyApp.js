@@ -124,6 +124,31 @@ function MyApp() {
     });
   }
 
+  // TODO this is not working, "filter is not a function"
+  //    fetchAllCredentials is not returning an array?
+  // Checks if login credentials is valid
+  function isCredentialValid(credentialToCheck) {
+    try {
+      const credentials = fetchAllCredentials();
+
+      if (!credentials) return false;
+
+      return (
+        credentials.filter((credential) => {
+          return (
+            credential.username === credentialToCheck.username &&
+            credential.password === credentialToCheck.password
+          );
+        }).length > 0
+      );
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  // TODO Used for account creation, checks if username is unique
+
   useEffect(() => {
     // Updating tasks
     fetchAllTasks().then((result) => {
@@ -147,7 +172,12 @@ function MyApp() {
         <Routes>
           <Route
             path="/"
-            element={<Login handleSubmitCredential={updateCredentialList} />}
+            element={
+              <Login
+                handleSubmitCredential={updateCredentialList}
+                isCredentialValid={isCredentialValid}
+              />
+            }
           ></Route>
           <Route
             path="/TaskList"

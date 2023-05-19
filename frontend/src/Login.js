@@ -22,20 +22,11 @@ function Login(props) {
   function submitLogin(event) {
     event.preventDefault();
     setLoginStatus("Logging in...");
-
+    console.log("Checking Credentials");
     setTimeout(() => {
-      // TODO function to check
-      const isLoggedIn =
-        Credential.username === "validUser" &&
-        Credential.password === "validPassword";
-
-      if (isLoggedIn) {
+      console.log(props.isCredentialValid(Credential));
+      if (props.isCredentialValid(Credential)) {
         setLoginStatus("Login successful!");
-        props.handleSubmitCredential(Credential); // TODO change to login handleSubmitLogin
-        setCredential({
-          username: "",
-          password: "",
-        });
       } else {
         setLoginStatus("Invalid username or password.");
       }
@@ -45,15 +36,10 @@ function Login(props) {
   function submitCreateAccount(event) {
     event.preventDefault();
     setLoginStatus("Creating account...");
-    // TODO function to create the account
     // TODO check if the username is unique
 
     setLoginStatus("Account created!");
     props.handleSubmitCredential(Credential);
-    setCredential({
-      username: "",
-      password: "",
-    });
   }
 
   return (

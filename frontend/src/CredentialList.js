@@ -19,7 +19,7 @@ function CredentialListBody(props) {
         <td>{row.username}</td>
         <td>{row.password}</td>
         <td>
-          <button onClick={() => props.removeCharacter(index)}>
+          <button onClick={() => props.removeCredential(index)}>
             Remove Credential
           </button>
         </td>
@@ -34,8 +34,8 @@ function CredentialList(props) {
     <table>
       <CredentialListHeader />
       <CredentialListBody
-        characterData={props.characterData}
-        removeCharacter={props.removeCharacter}
+        credentialData={props.credentialData}
+        removeCredential={props.removeCredential}
       />
       <Link to="/form">
         <button>Create New Task</button>
