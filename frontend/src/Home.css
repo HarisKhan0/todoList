@@ -1,3 +1,7 @@
+Home {
+    padding: 20px;
+}
+
 .Login-Signup {
 
 position: relative;
@@ -24,13 +28,21 @@ font-family: 'Inter';
 font-style: normal;
 font-size: 100px;
 line-height: 100px;
-text-align: end;
 top: 5%;
-right: 40%;
-
+right: 38%;
 color: #000000;
 }
 
+.buttontext {
+    position: relatve;
+    width: 100%;
+    font-family: 'Impact';
+    font-size: 60px;
+    height: auto;
+    text-align: center;
+    vertical-align: top;
+    line-height: 10px;
+}
 
 username {
 position: absolute;
@@ -169,17 +181,11 @@ height: 111px;
 
 .block {
     position: absolute;
-    display: block;
     width: 50%;
     height: 10%;
-    border: none;
     background-color: #A8FFA0;
-    color: #000000;
     padding: 14px 28px;
-    font-size: 40px;
     cursor: pointer;
-    text-align: center;
-    flex-direction: row;
     bottom: 7%;
     right: 25%;
 }

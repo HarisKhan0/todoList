@@ -6,7 +6,7 @@ const Home = () => {
         <div className= "GrayRectangle">
             <div className= "ListIt">ListIt!</div> 
                 <div className= "block" onClick={event =>  window.location.href='/table'}>
-                    Enter ListIt!
+                    <h1 className= "buttontext">Enter ListIt!</h1>
                 </div> 
         </div>
     )
