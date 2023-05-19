@@ -6,15 +6,15 @@ function Login(props) {
   const [loginStatus, setLoginStatus] = useState("");
 
   // Credentials object
-  const [credentials, setCredentials] = useState({
+  const [Credential, setCredential] = useState({
     username: "",
     password: "",
   });
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setCredentials({
-      ...credentials,
+    setCredential({
+      ...Credential,
       [name]: value,
     });
   }
@@ -26,13 +26,13 @@ function Login(props) {
     setTimeout(() => {
       // TODO function to check
       const isLoggedIn =
-        credentials.username === "validUser" &&
-        credentials.password === "validPassword";
+        Credential.username === "validUser" &&
+        Credential.password === "validPassword";
 
       if (isLoggedIn) {
         setLoginStatus("Login successful!");
-        props.handleSubmitCredential(credentials); // TODO change to login handleSubmitLogin
-        setCredentials({
+        props.handleSubmitCredential(Credential); // TODO change to login handleSubmitLogin
+        setCredential({
           username: "",
           password: "",
         });
@@ -45,17 +45,15 @@ function Login(props) {
   function submitCreateAccount(event) {
     event.preventDefault();
     setLoginStatus("Creating account...");
-    setTimeout(() => {
-      // TODO function to create the account
-      // TODO check if the username is unique
+    // TODO function to create the account
+    // TODO check if the username is unique
 
-      setLoginStatus("Account created!");
-      props.handleSubmitCredential(credentials);
-      setCredentials({
-        username: "",
-        password: "",
-      });
-    }, 1500);
+    setLoginStatus("Account created!");
+    props.handleSubmitCredential(Credential);
+    setCredential({
+      username: "",
+      password: "",
+    });
   }
 
   return (
@@ -65,7 +63,7 @@ function Login(props) {
         type="text"
         name="username"
         id="username"
-        value={credentials.username}
+        value={Credential.username}
         onChange={handleChange}
       />
       <label htmlFor="password">Password</label>
@@ -73,11 +71,19 @@ function Login(props) {
         type="password"
         name="password"
         id="password"
-        value={credentials.password}
+        value={Credential.password}
         onChange={handleChange}
       />
-      <button onClick={submitLogin}>Login</button>
-      <button onClick={submitCreateAccount}>Create Account</button>
+      <input
+        type="button"
+        value="Login"
+        onClick={(event) => submitLogin(event)}
+      />
+      <input
+        type="button"
+        value="Create Account"
+        onClick={(event) => submitCreateAccount(event)}
+      />
       <p>{loginStatus}</p>
     </div>
   );

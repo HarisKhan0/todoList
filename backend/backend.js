@@ -10,25 +10,22 @@ const port = 8000;
 app.use(cors());
 app.use(express.json());
 
-// TODO Gets all credentials
-app.get("/credentials", async (req, res) => {
-  const username = req.query["username"];
-  const password = req.query["password"];
+// Gets all tasks
+app.get("/tasks", async (req, res) => {
   try {
-    // TODO change this to grab credentials
-    const result = await credentialServices.getCredentials(username, password);
-    res.send({ credential_list: result });
+    const result = await taskServices.getTasks();
+    res.send({ task_list: result });
   } catch (error) {
     console.log(error);
     res.status(500).send("An error occurred in the server.");
   }
 });
 
-// Gets all tasks
-app.get("/tasks", async (req, res) => {
+// Gets all credentials
+app.get("/credentials", async (req, res) => {
   try {
-    const result = await taskServices.getTasks();
-    res.send({ task_list: result });
+    const result = await credentialServices.getCredentials();
+    res.send({ credential_list: result });
   } catch (error) {
     console.log(error);
     res.status(500).send("An error occurred in the server.");
@@ -46,10 +43,18 @@ app.post("/tasks", async (req, res) => {
 });
 
 // TODO test this
-// Deletes a credential with id
-app.delete("/credentials/:id", async (req, res) => {
+// Stores a credential
+app.post("/credentials", async (req, res) => {
+  const credential = req.body;
+  const savedCredential = await credentialServices.addCredential(credential);
+  if (savedCredential) res.status(201).send(savedCredential);
+  else res.status(500).end();
+});
+
+// Deletes a task with id
+app.delete("/tasks/:id", async (req, res) => {
   const id = req.params["id"];
-  const result = await credentialServices.deleteCredentialById(id);
+  const result = await taskServices.deleteTaskById(id);
   if (result === undefined || result === null)
     res.status(404).send("Resource not found.");
   else {
@@ -57,10 +62,11 @@ app.delete("/credentials/:id", async (req, res) => {
   }
 });
 
-// Deletes a task with id
-app.delete("/tasks/:id", async (req, res) => {
+// TODO test this
+// Deletes a credential with id
+app.delete("/credentials/:id", async (req, res) => {
   const id = req.params["id"];
-  const result = await taskServices.deleteTaskById(id);
+  const result = await credentialServices.deleteCredentialById(id);
   if (result === undefined || result === null)
     res.status(404).send("Resource not found.");
   else {
