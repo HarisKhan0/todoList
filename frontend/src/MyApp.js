@@ -4,6 +4,8 @@ import Table from './Table';
 import Form from './Form';
 import axios from 'axios';
 import Home from "./Home";
+import Mview from "./mview";
+import Wview from "./wview";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -82,6 +84,8 @@ function MyApp() {
               <Route path = "/" element = {<Home/>} />
               <Route path = "/table" element={<Table characterData={characters} removeCharacter={removeOneCharacter} />}></Route>
               <Route path = "/form" element={<Form handleSubmit={updateList} />}></Route>
+              <Route path = "/mview" element = {<Mview/>} />
+              <Route path = "/wview" element = {<Wview/>} />
             </Routes>
           </div>
         </BrowserRouter>
