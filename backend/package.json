@@ -12,8 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^7.1.0",
+    "mongodb": "^5.5.0",
+    "mongoose": "^7.1.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

@@ -1020,6 +1020,21 @@
     }
   }
   
+  .no-urgency {
+    background-color: #f8f8f8;
+  }
+
+  .low-urgency {
+    background-color: green;
+  }
+  
+  .medium-urgency {
+    background-color: yellow;
+  }
+  
+  .high-urgency {
+    background-color: red;
+  }
   /*
    * Navigation
    */
