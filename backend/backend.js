@@ -3,27 +3,14 @@ const cors = require("cors");
 
 const userServices = require("./models/user-services");
 
+// import the function to connect to the database
+const mongoDB = require("./databaseConnector.js");
+
 const app = express();
 const port = 8000;
 
-// start mongodb connection
-
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-
-dotenv.config();
-
-// Uncomment the following to debug mongoose queries, etc.
-//mongoose.set("debug", true);
-
-mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true, //useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
-  .catch((error) => console.log(error));
-
-// end mongodb connection
+// connect to the database
+mongoDB.connect();
 
 app.use(cors());
 app.use(express.json());
