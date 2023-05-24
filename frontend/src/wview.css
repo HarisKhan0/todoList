@@ -1,0 +1,65 @@
+calendarbox {
+position: absolute;
+width: 100px;
+height: 100px;
+left: 0px;
+top: 0px;
+
+background: #737373;
+}
+
+calendarboxright {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: 0px;
+    top: 0px;
+    
+    background: #737373;
+    }
+
+.calendar {
+position: absolute;
+width: 62px;
+height: 57px;
+left: 19px;
+top: 22px;
+}
+
+.header {
+position: absolute;
+width: 1240px;
+height: 100px;
+left: 100px;
+top: 0px;
+
+background: #A8C7F7;
+}
+
+.headtext {
+position: relative;
+width: 1240px;
+height: 100px;
+left: 450px;
+top: 0px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 50px;
+line-height: 61px;
+display: flex;
+text-align: center;
+vertical-align: center;
+
+color: #000000;
+}
+
+.addbut {
+position: absolute;
+width: 51px;
+height: 53px;
+left: 1364px;
+top: 24px;
+
+}
