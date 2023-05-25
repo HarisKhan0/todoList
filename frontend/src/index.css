@@ -1025,15 +1025,15 @@
   }
 
   .low-urgency {
-    background-color: green;
+    background-color: #38e312;
   }
   
   .medium-urgency {
-    background-color: yellow;
+    background-color: #f2c00a;
   }
   
   .high-urgency {
-    background-color: red;
+    background-color: #eb3d2a;
   }
   /*
    * Navigation
