@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const TaskSchema = new mongoose.Schema(
   {
+    user: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     task_name: {
       type: String,
       required: true,
@@ -11,10 +16,6 @@ const TaskSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      validate(value) {
-        if (value.length < 2)
-          throw new Error("Invalid job, must be at least 2 characters.");
-      },
     },
     days: {
       type: Number,

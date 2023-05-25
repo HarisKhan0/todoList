@@ -1,70 +1,177 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Table from "./Table";
-import Form from "./Form";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 
+import TaskList from "./TaskList";
+import CredentialList from "./CredentialList";
+import Form from "./Form";
+import Login from "./Login";
+
 function MyApp() {
-  const [characters, setCharacters] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const [credentials, setCredentials] = useState([]);
 
-  function removeOneCharacter(index) {
-    const deletedUser = characters.find((character, i) => {
-      return i === index;
-    });
+  // Getting all tasks through backend
+  async function fetchAllTasks() {
+    try {
+      const response = await axios.get("http://localhost:8000/tasks");
+      return response.data.task_list;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
 
-    makeDeleteCall(deletedUser._id).then((result) => {
+  // Getting all credentials through backend
+  async function fetchAllCredentials() {
+    try {
+      const response = await axios.get("http://localhost:8000/credentials");
+      return response.data.credential_list;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  // Adding a task through backend
+  async function makeTaskPostCall(task) {
+    try {
+      const response = await axios.post("http://localhost:8000/tasks", task);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  // Adding a credential through backend
+  async function makeCredentialPostCall(credential) {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/credentials",
+        credential
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  // Delete a task through backend
+  async function makeTaskDeleteCall(_id) {
+    try {
+      const response = await axios.delete(`http://localhost:8000/tasks/${_id}`);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  // Delete a credential through backend
+  async function makeCredentialDeleteCall(_id) {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8000/credentials/${_id}`
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  // Remove task at the given index
+  function removeOneTask(index) {
+    const deletedTask = tasks.find((character, i) => i === index);
+
+    makeTaskDeleteCall(deletedTask._id).then((result) => {
       if (result && result.status === 204) {
-        const updated = characters.filter((character, i) => {
-          return i !== index;
-        });
-        setCharacters(updated);
+        const updated = tasks.filter((character, i) => i !== index);
+        setTasks(updated);
       }
     });
   }
 
-  function updateList(person) {
-    makePostCall(person).then((result) => {
-      if (result && result.status === 201)
-        setCharacters([...characters, result.data]);
+  // Remove credential at the given index
+  function removeOneCredential(index) {
+    const deletedCredential = credentials.find((character, i) => i === index);
+
+    makeCredentialDeleteCall(deletedCredential._id).then((result) => {
+      if (result && result.status === 204) {
+        const updated = credentials.filter((character, i) => i !== index);
+        setCredentials(updated);
+      }
     });
   }
 
-  async function fetchAll() {
+  // Stores a task
+  function updateTaskList(task) {
+    makeTaskPostCall(task).then((result) => {
+      if (result && result.status === 201) {
+        setTasks([...tasks, result.data]);
+      }
+    });
+  }
+
+  // Stores a credential
+  function updateCredentialList(credential) {
+    makeCredentialPostCall(credential).then((result) => {
+      if (result && result.status === 201) {
+        setCredentials([...credentials, result.data]);
+      }
+    });
+  }
+
+  // TODO this is not working, "filter is not a function"
+  //    fetchAllCredentials is not returning an array?
+  // Checks if login credentials is valid
+  async function isCredentialValid(credentialToCheck) {
     try {
-      const response = await axios.get("http://localhost:8000/users");
-      return response.data.task_list;
+      const credentials = await fetchAllCredentials();
+
+      if (!credentials) {
+        return false;
+      }
+
+      console.log(credentials);
+
+      const isValid = credentials.some((credential) => {
+        //        console.log(credential);
+        return (
+          credential.username === credentialToCheck.username &&
+          credential.password === credentialToCheck.password
+        );
+      });
+
+      console.log("IsValid: " + isValid);
+
+      return isValid;
     } catch (error) {
-      //We're not handling errors. Just logging into the console.
       console.log(error);
       return false;
     }
   }
+
+  // TODO Used for account creation, checks if username is unique
 
   useEffect(() => {
-    fetchAll().then((result) => {
-      if (result) setCharacters(result);
+    // Updating tasks
+    fetchAllTasks().then((result) => {
+      if (result) {
+        setTasks(result);
+      }
+    });
+
+    // TODO check if there is a better way to implement this?
+    // Updating Credentials
+    fetchAllCredentials().then((result) => {
+      if (result) {
+        setCredentials(result);
+      }
     });
   }, []);
-
-  async function makePostCall(person) {
-    try {
-      const response = await axios.post("http://localhost:8000/users", person);
-      return response;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
-
-  async function makeDeleteCall(_id) {
-    try {
-      const response = await axios.delete(`http://localhost:8000/users/${_id}`);
-      return response;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
 
   return (
     <BrowserRouter>
@@ -73,23 +180,28 @@ function MyApp() {
           <Route
             path="/"
             element={
-              <Link to="/table">
-                <button>Enter ListIt</button>
-              </Link>
+              <Login
+                handleSubmitCredential={updateCredentialList}
+                isCredentialValid={isCredentialValid}
+              />
             }
           ></Route>
           <Route
-            path="/table"
+            path="/TaskList"
+            element={<TaskList taskData={tasks} removeTask={removeOneTask} />}
+          ></Route>
+          <Route
+            path="/CredentialList"
             element={
-              <Table
-                characterData={characters}
-                removeCharacter={removeOneCharacter}
+              <CredentialList
+                credentialData={credentials}
+                removeCredential={removeOneCredential}
               />
             }
           ></Route>
           <Route
             path="/form"
-            element={<Form handleSubmit={updateList} />}
+            element={<Form handleSubmitTask={updateTaskList} />}
           ></Route>
         </Routes>
       </div>

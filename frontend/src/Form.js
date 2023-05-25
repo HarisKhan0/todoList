@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Form(props) {
-  //new task object
   const [Task, setTask] = useState({
+    user: "Filler User",
     task_name: "",
     task_description: "",
     days: "",
@@ -13,70 +13,15 @@ function Form(props) {
 
   function handleChange(event) {
     const { name, value } = event.target;
-    if (name === "task_name") {
-      setTask({
-        ...Task,
-        task_name: value,
-      });
-    } else if (name === "task_description") {
-      setTask({
-        ...Task,
-        task_description: value,
-      });
-    } else if (name === "days") {
-      setTask({
-        ...Task,
-        days: value,
-      });
-    } else if (name === "difficulty") {
-      setTask({
-        ...Task,
-        difficulty: value,
-      });
-    } else if (name === "stress_rating") {
-      setTask({
-        ...Task,
-        stress_rating: value,
-      });
-    }
+    setTask({
+      ...Task,
+      [name]: value,
+    });
   }
-
-  //     switch (name) {
-  //       case "description":
-  //         setTask({ ...Task, description: value });
-  //         break;
-  //       case "days":
-  //         setTask({ ...Task, days: parseInt(value) });
-  //         break;
-  //       case "difficulty":
-  //         setTask({ ...Task, difficulty: parseInt(value) });
-  //         break;
-  //       case "stress_rating":
-  //         setTask({ ...Task, stress_rating: parseInt(value) });
-  //         break;
-  //       default:
-  //         setTask({ ...Task, [name]: value });
-  //     }
-  // }
-
-  // function handleChange(event) {
-  //   const { name, value } = event.target;
-  //   if (name === "task_name")
-  //     setTask({name: Task['task_name'], description: value});
-  //   else if (name === "description")
-  //     setTask({name: Task['description'], description: value});
-  //   else if (name === "description")
-  //     setTask({name: Task['description'], description: value});
-
-  //     else
-  //         setTask(
-  //             {name: value, description: Task['description']}
-  //         );
-  // }
 
   function submitForm(event) {
     event.preventDefault();
-    props.handleSubmit(Task);
+    props.handleSubmitTask(Task);
     setTask({
       name: "",
       description: "",
@@ -141,7 +86,7 @@ function Form(props) {
         value="Add Task"
         onClick={(event) => submitForm(event)}
       />
-      <Link to="/table">
+      <Link to="/TaskList">
         <button>View Todo List</button>
       </Link>
     </form>
@@ -149,67 +94,3 @@ function Form(props) {
 }
 
 export default Form;
-
-//     function submitForm() {
-//         props.handleSubmit(Task);
-//         setTask({name: '', description: ''});
-//     }
-// // Adding functionality for question support~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//     return (
-//         <form>
-//         <label htmlFor="name">Task Name</label>
-//         <input
-//             type="text"
-//             name="name"
-//             id="name"
-//             value={Task.name}
-//             onChange={handleChange} />
-//         <label htmlFor="description">Task Description</label>
-//         <input
-//             type="text"
-//             name="description"
-//             id="description"
-//             value={Task.description}
-//             onChange={handleChange} />
-//         <label htmlFor="name">How many days is the task due in/when would you like to have this done?</label>
-//         <input
-//             type="text"
-//             name="name"
-//             id="name"
-//             value={Task.name}
-//             onChange={handleChange} />
-
-//         <label htmlFor="name">How important is this task on a scale of 1 to 10?</label>
-//         <input
-//             type="text"
-//             name="name"
-//             id="name"
-//             value={Task.name}
-//             onChange={handleChange} />
-
-//         <label htmlFor="name">How stressed is this task making you feel on a scale of 1 to 10?</label>
-//         <input
-//             type="text"
-//             name="name"
-//             id="name"
-//             value={Task.name}
-//             onChange={handleChange} />
-
-//         <input type="button" value="Add New Task" onClick={submitForm} />
-//         </form>
-//     );
-// }
-
-// export default Form;
-
-// function handleChange(event) {
-//     const { name, value } = event.target;
-//     if (name === "description")
-//         setTask(
-//             {name: Task['name'], description: value}
-//         );
-//     else
-//         setTask(
-//             {name: value, description: Task['description']}
-//         );
-// }
