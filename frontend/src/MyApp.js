@@ -7,6 +7,24 @@ import axios from "axios";
 function MyApp() {
   const [characters, setCharacters] = useState([]);
 
+  // added function to indicate complete if a task is complete
+  function toggleComplete(index) {
+    const updatedCharacters = characters.map((character, i) => {
+      if (i === index) {
+        return {
+          ...character,
+          complete: !character.complete, // Toggle the complete value
+        };
+      }
+      return character;
+    });
+    setCharacters(updatedCharacters);
+  }
+
+  function updateUrgency(updatedCharacters) {
+    setCharacters(updatedCharacters);
+  }
+
   function removeOneCharacter(index) {
     const deletedUser = characters.find((character, i) => {
       return i === index;
@@ -77,6 +95,7 @@ function MyApp() {
                 <button>Enter ListIt</button>
               </Link>
             }
+            s
           ></Route>
           <Route
             path="/table"
@@ -84,6 +103,8 @@ function MyApp() {
               <Table
                 characterData={characters}
                 removeCharacter={removeOneCharacter}
+                toggleComplete={toggleComplete}
+                updateUrgency={updateUrgency}
               />
             }
           ></Route>

@@ -57,7 +57,37 @@
   /**
    * 1. Add the correct box sizing in Firefox.
    * 2. Show the overflow in Edge and IE.
-   */
+   */  
+  
+  .overdue {
+    font-weight: bold;
+  }
+  
+  .red {
+    color: red;
+  }
+  
+  .bold-black {
+    font-weight: bold;
+    color: black;
+  }
+  
+  .no-urgency {
+    background-color: #f8f8f8;
+  }
+
+  .low-urgency {
+    background-color: #38e312;
+  }
+  
+  .medium-urgency {
+    background-color: #f2c00a;
+  }
+  
+  .high-urgency {
+    background-color: #eb3d2a;
+  }
+
   hr {
     box-sizing: content-box;
     /* 1 */
@@ -989,18 +1019,7 @@
   tfoot th {
     border-top: 2px solid #dedede;
   }
-  .overdue {
-    font-weight: bold;
-  }
-  
-  .red {
-    color: red;
-  }
-  
-  .bold-black {
-    font-weight: bold;
-    color: black;
-  }
+
 
   td {
     border-bottom: 1px solid #dedede;
