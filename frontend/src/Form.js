@@ -38,9 +38,13 @@ function Form(props) {
         ...Task,
         stress_rating: value,
       });
+    } else if (name === "due_date") {
+      setTask({
+        ...Task,
+        due_date: value,
+      });
     }
   }
-
   //     switch (name) {
   //       case "description":
   //         setTask({ ...Task, description: value });
@@ -73,7 +77,6 @@ function Form(props) {
   //             {name: value, description: Task['description']}
   //         );
   // }
-
   function submitForm(event) {
     event.preventDefault();
     props.handleSubmit(Task);
@@ -104,9 +107,7 @@ function Form(props) {
         value={Task.description}
         onChange={handleChange}
       />
-      <label htmlFor="days">
-        How many days is the task due in/when would you like to have this done?
-      </label>
+      <label htmlFor="days">Enter task due date (MM-DD-YYYY·format)</label>
       <input
         type="text"
         name="days"

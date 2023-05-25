@@ -989,7 +989,19 @@
   tfoot th {
     border-top: 2px solid #dedede;
   }
+  .overdue {
+    font-weight: bold;
+  }
   
+  .red {
+    color: red;
+  }
+  
+  .bold-black {
+    font-weight: bold;
+    color: black;
+  }
+
   td {
     border-bottom: 1px solid #dedede;
   }

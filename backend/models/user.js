@@ -17,7 +17,7 @@ const TaskSchema = new mongoose.Schema(
       },
     },
     days: {
-      type: Number,
+      type: Date,
       required: true,
     },
     difficulty: {
@@ -32,9 +32,26 @@ const TaskSchema = new mongoose.Schema(
       type: Number,
       required: false,
     },
+    color: {
+      type: String,
+      required: false,
+    },
+    // due_date: {
+    //   type: Date,
+    //   required: false,
+    // },
   },
   { collection: "task_list" }
 );
+
+
+TaskSchema.virtual('days_remaining').get(function() {
+  const currentTimestamp = new Date();
+  const dueTimestamp = this.due_date.getTime();
+  const remainingTime = dueTimestamp - currentTimestamp.getTime();
+  const remainingDays = Math.ceil(remainingTime / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
+  return remainingDays;
+});
 
 TaskSchema.pre("save", function (next) {
   this.priority = this.calculatePriority();
