@@ -12,12 +12,12 @@ function Form(props) {
   });
 
   function handleChange(event) {
-  //   const { name, value } = event.target;
-  //   setTask({
-  //     ...Task,
-  //     [name]: value,
-  //   });
-  // }
+    const { name, value } = event.target;
+    //setTask({
+    //     ...Task,
+    //     [name]: value,
+    //   });
+    // }
 
     if (name === "task_name") {
       setTask({

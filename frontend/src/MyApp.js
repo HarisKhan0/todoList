@@ -23,26 +23,21 @@ function MyApp() {
   }
   // added function to indicate complete if a task is complete
   function toggleComplete(index) {
-    const updatedCharacters = characters.map((character, i) => {
+    const updatedTasks = tasks.map((task, i) => {
       if (i === index) {
         return {
-          ...character,
-          complete: !character.complete, // Toggle the complete value
+          ...task,
+          complete: !task.complete, // Toggle the complete value
         };
       }
-      return character;
+      return task;
     });
-    setCharacters(updatedCharacters);
+    setTasks(updatedTasks);
   }
 
-  function updateUrgency(updatedCharacters) {
-    setCharacters(updatedCharacters);
+  function updateUrgency(updatedTasks) {
+    setTasks(updatedTasks);
   }
-
-  function removeOneCharacter(index) {
-    const deletedUser = characters.find((character, i) => {
-      return i === index;
-    });
 
   // Getting all credentials through backend
   async function fetchAllCredentials() {
@@ -106,11 +101,11 @@ function MyApp() {
 
   // Remove task at the given index
   function removeOneTask(index) {
-    const deletedTask = tasks.find((character, i) => i === index);
+    const deletedTask = tasks.find((task, i) => i === index);
 
     makeTaskDeleteCall(deletedTask._id).then((result) => {
       if (result && result.status === 204) {
-        const updated = tasks.filter((character, i) => i !== index);
+        const updated = tasks.filter((task, i) => i !== index);
         setTasks(updated);
       }
     });
@@ -118,11 +113,11 @@ function MyApp() {
 
   // Remove credential at the given index
   function removeOneCredential(index) {
-    const deletedCredential = credentials.find((character, i) => i === index);
+    const deletedCredential = credentials.find((task, i) => i === index);
 
     makeCredentialDeleteCall(deletedCredential._id).then((result) => {
       if (result && result.status === 204) {
-        const updated = credentials.filter((character, i) => i !== index);
+        const updated = credentials.filter((task, i) => i !== index);
         setCredentials(updated);
       }
     });
@@ -211,11 +206,14 @@ function MyApp() {
           ></Route>
           <Route
             path="/TaskList"
-            element={<TaskList 
-            taskData={tasks} 
-            removeTask={removeOneTask}
-            toggleComplete={toggleComplete}
-            updateUrgency={updateUrgency} />}
+            element={
+              <TaskList
+                taskData={tasks}
+                removeTask={removeOneTask}
+                toggleComplete={toggleComplete}
+                updateUrgency={updateUrgency}
+              />
+            }
           ></Route>
           <Route
             path="/CredentialList"

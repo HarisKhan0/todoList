@@ -41,8 +41,7 @@ const TaskSchema = new mongoose.Schema(
   { collection: "task_list" }
 );
 
-
-TaskSchema.virtual('days_remaining').get(function() {
+TaskSchema.virtual("days_remaining").get(function () {
   const currentTimestamp = new Date();
   const dueTimestamp = this.due_date.getTime();
   const remainingTime = dueTimestamp - currentTimestamp.getTime();

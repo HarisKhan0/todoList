@@ -17,7 +17,7 @@ function TaskListHeader() {
 }
 
 function TableBody(props) {
-  const rows = props.characterData.map((row, index) => {
+  const rows = props.taskData.map((row, index) => {
     const dueDate = new Date(row.days);
     const formattedDueDate = dueDate.toLocaleDateString("en-US");
 
@@ -36,16 +36,16 @@ function TableBody(props) {
     const daysRemainingClassName =
       isToday || isOneDayRemaining ? "bold-black" : "";
     const handleUrgencyChange = (e) => {
-      const updatedCharacters = props.characterData.map((character, i) => {
+      const updatedTasks = props.taskData.map((task, i) => {
         if (i === index) {
           return {
-            ...character,
+            ...task,
             urgency: e.target.value,
           };
         }
-        return character;
+        return task;
       });
-      props.updateUrgency(updatedCharacters);
+      props.updateUrgency(updatedTasks);
     };
     // Determine the CSS class based on urgency value
     let urgencyClass = "";
@@ -93,9 +93,7 @@ function TableBody(props) {
         <td></td>
 
         <td>
-          <button onClick={() => props.removeCharacter(index)}>
-            Remove Task
-          </button>
+          <button onClick={() => props.removeTask(index)}>Remove Task</button>
         </td>
       </tr>
     );
@@ -106,10 +104,10 @@ function TableBody(props) {
 function TaskList(props) {
   return (
     <table>
-      <TableHeader />
+      <TaskListHeader />
       <TableBody
-        characterData={props.characterData}
-        removeCharacter={props.removeCharacter}
+        taskData={props.taskData}
+        removeTask={props.removeTask}
         toggleComplete={props.toggleComplete}
         updateUrgency={props.updateUrgency}
       />
