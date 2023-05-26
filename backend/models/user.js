@@ -36,10 +36,6 @@ const TaskSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    // due_date: {
-    //   type: Date,
-    //   required: false,
-    // },
   },
   { collection: "task_list" }
 );
