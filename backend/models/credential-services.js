@@ -1,13 +1,4 @@
-const mongoose = require("mongoose");
 const credentialModel = require("./credential");
-mongoose.set("debug", true);
-
-mongoose
-  .connect("mongodb://127.0.0.1/credentials", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .catch((error) => console.log(error));
 
 // Returns all credentials
 async function getCredentials() {
