@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Login.css";
 // import { Link } from "react-router-dom";
 
 function Login(props) {
@@ -49,29 +50,37 @@ function Login(props) {
   }
 
   return (
-    <div>
-      <label htmlFor="username">Username</label>
+    <div className="GrayRectangle">
+      <div className="ListIt">ListIt!</div>
+      <div className="username">
+        <label htmlFor="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          value={Credential.username}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="password">
+        <label htmlFor="password">Password</label>
+        <input
+          style={{ backgroundColor: "white" }}
+          type="password"
+          name="password"
+          id="password"
+          value={Credential.password}
+          onChange={handleChange}
+        />
+      </div>
       <input
-        type="text"
-        name="username"
-        id="username"
-        value={Credential.username}
-        onChange={handleChange}
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        value={Credential.password}
-        onChange={handleChange}
-      />
-      <input
+        className="buttontext1"
         type="button"
         value="Login"
         onClick={(event) => submitLogin(event)}
       />
       <input
+        className="buttontext2"
         type="button"
         value="Create Account"
         onClick={(event) => submitCreateAccount(event)}
