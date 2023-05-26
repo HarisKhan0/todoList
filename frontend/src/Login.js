@@ -55,6 +55,7 @@ function Login(props) {
       <div className="username">
         <label htmlFor="username">Username</label>
         <input
+          style={{ backgroundColor: "white" }}
           type="text"
           name="username"
           id="username"
