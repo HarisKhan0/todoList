@@ -15,9 +15,9 @@ async function getCredentials() {
 }
 
 // Returns credential with username, used for creating unique username accounts
-async function findCredentialsByUsername(username) {
-  return await credentialModel.find({ username: username });
-}
+//async function findCredentialsByUsername(username) {
+//  return await credentialModel.find({ username: username });
+//}
 
 // Return a credential with id
 async function findCredentialById(id) {
