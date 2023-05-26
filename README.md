@@ -1,6 +1,4 @@
-[![Node.js CI](https://github.com/HarisKhan0/todoList/actions/workflows/node.js.yml/badge.svg)](https://github.com/HarisKhan0/todoList/actions/workflows/node.js.yml)
-
-# Todo List
+# Todo List [![Node.js CI](https://github.com/HarisKhan0/todoList/actions/workflows/node.js.yml/badge.svg)](https://github.com/HarisKhan0/todoList/actions/workflows/node.js.yml)
 
 ### Contributors: Sam Todd, Winton Gee, Hamza Aziz, Haris Khan, Bill Chan 
 
