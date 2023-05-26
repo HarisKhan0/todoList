@@ -1,64 +1,62 @@
 Home {
-    padding: 20px;
+  padding: 20px;
 }
 
 .Login-Signup {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
 
-position: relative;
-width: 1440px;
-height: 1024px;
-
-background: #ffffff;
+  background: #ffffff;
 }
 
-.GrayRectangle 
-{
-    position: absolute;
-    width: 1000px;
-    height: 800px;
-    left: 358px;
-    top: 120px;
-    
-    background: #D9D9D9;
+.GrayRectangle {
+  position: absolute;
+  width: 1000px;
+  height: 800px;
+  left: 358px;
+  top: 120px;
+
+  background: #d9d9d9;
 }
 
 .ListIt {
-position: absolute;
-font-family: 'Inter';
-font-style: normal;
-font-size: 100px;
-line-height: 100px;
-top: 100px;
-right: 38%;
-color: #000000;
+  position: absolute;
+  font-family: "Inter";
+  font-style: normal;
+  font-size: 100px;
+  line-height: 100px;
+  top: 100px;
+  right: 38%;
+  color: #000000;
 }
 
 .buttontext1 {
-    position: absolute;
-    width: 350px;
-    height: 58px;
-    left: 100px;
-    top: 605px;
+  position: absolute;
+  width: 350px;
+  height: 58px;
+  left: 100px;
+  top: 605px;
 }
 
 .buttontext2 {
-    position: absolute;
-    width: 350px;
-    height: 58px;
-    left: 550px;
-    top: 605px;
+  position: absolute;
+  width: 350px;
+  height: 58px;
+  left: 550px;
+  top: 605px;
 }
 
 .username {
-    position: absolute;
-    width: 600px;
-    left: 208px;
-    top: 250px;
+  position: absolute;
+  width: 600px;
+  left: 208px;
+  top: 250px;
 }
 
 .password {
-    position: absolute;
-    width: 600px;
-    left: 208px;
-    top: 400px;
+  position: absolute;
+  width: 600px;
+  left: 208px;
+  top: 400px;
 }
