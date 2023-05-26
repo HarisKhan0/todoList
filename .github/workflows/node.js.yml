@@ -7,27 +7,21 @@ on:
     branches: [main]
 
 jobs:
-  
   build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [16.x]
         
     steps:
-      
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-          cache-dependency-path: backend/package-lock.json
-
-      - name: Build Backend
-        working-directory: backend
-        run: |
-          npm ci
-          npm run build --if-present
-          npm test
-          
+          cache-dependency-path: ./backend/package-lock.json
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+      
