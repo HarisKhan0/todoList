@@ -4,8 +4,13 @@ const cors = require("cors");
 const taskServices = require("./models/task-services");
 const credentialServices = require("./models/credential-services");
 
+// import the function to connect to the database
+const mongoDB = require("./databaseConnector.js");
+
 const app = express();
 const port = 8000;
+
+mongoDB.connect();
 
 app.use(cors());
 app.use(express.json());

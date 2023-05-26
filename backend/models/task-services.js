@@ -1,13 +1,4 @@
-const mongoose = require("mongoose");
 const taskModel = require("./task");
-mongoose.set("debug", true);
-
-mongoose
-  .connect("mongodb://127.0.0.1/tasks", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .catch((error) => console.log(error));
 
 // Gets all tasks in sorted priority
 async function getTasks() {
