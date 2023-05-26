@@ -21,6 +21,28 @@ function MyApp() {
       return false;
     }
   }
+  // added function to indicate complete if a task is complete
+  function toggleComplete(index) {
+    const updatedCharacters = characters.map((character, i) => {
+      if (i === index) {
+        return {
+          ...character,
+          complete: !character.complete, // Toggle the complete value
+        };
+      }
+      return character;
+    });
+    setCharacters(updatedCharacters);
+  }
+
+  function updateUrgency(updatedCharacters) {
+    setCharacters(updatedCharacters);
+  }
+
+  function removeOneCharacter(index) {
+    const deletedUser = characters.find((character, i) => {
+      return i === index;
+    });
 
   // Getting all credentials through backend
   async function fetchAllCredentials() {
@@ -185,10 +207,15 @@ function MyApp() {
                 isCredentialValid={isCredentialValid}
               />
             }
+            s
           ></Route>
           <Route
             path="/TaskList"
-            element={<TaskList taskData={tasks} removeTask={removeOneTask} />}
+            element={<TaskList 
+            taskData={tasks} 
+            removeTask={removeOneTask}
+            toggleComplete={toggleComplete}
+            updateUrgency={updateUrgency} />}
           ></Route>
           <Route
             path="/CredentialList"

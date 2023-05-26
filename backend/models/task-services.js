@@ -24,7 +24,6 @@ async function findTaskById(id) {
   }
 }
 
-// Stores a task
 async function addTask(task) {
   try {
     const taskToAdd = new taskModel(task);

@@ -12,13 +12,77 @@ function Form(props) {
   });
 
   function handleChange(event) {
-    const { name, value } = event.target;
-    setTask({
-      ...Task,
-      [name]: value,
-    });
-  }
+  //   const { name, value } = event.target;
+  //   setTask({
+  //     ...Task,
+  //     [name]: value,
+  //   });
+  // }
 
+    if (name === "task_name") {
+      setTask({
+        ...Task,
+        task_name: value,
+      });
+    } else if (name === "task_description") {
+      setTask({
+        ...Task,
+        task_description: value,
+      });
+    } else if (name === "days") {
+      setTask({
+        ...Task,
+        days: value,
+      });
+    } else if (name === "difficulty") {
+      setTask({
+        ...Task,
+        difficulty: value,
+      });
+    } else if (name === "stress_rating") {
+      setTask({
+        ...Task,
+        stress_rating: value,
+      });
+    } else if (name === "due_date") {
+      setTask({
+        ...Task,
+        due_date: value,
+      });
+    }
+  }
+  //     switch (name) {
+  //       case "description":
+  //         setTask({ ...Task, description: value });
+  //         break;
+  //       case "days":
+  //         setTask({ ...Task, days: parseInt(value) });
+  //         break;
+  //       case "difficulty":
+  //         setTask({ ...Task, difficulty: parseInt(value) });
+  //         break;
+  //       case "stress_rating":
+  //         setTask({ ...Task, stress_rating: parseInt(value) });
+  //         break;
+  //       default:
+  //         setTask({ ...Task, [name]: value });
+  //     }
+  // }
+
+  // function handleChange(event) {
+  //   const { name, value } = event.target;
+  //   if (name === "task_name")
+  //     setTask({name: Task['task_name'], description: value});
+  //   else if (name === "description")
+  //     setTask({name: Task['description'], description: value});
+  //   else if (name === "description")
+  //     setTask({name: Task['description'], description: value});
+
+  //     else
+  //         setTask(
+  //             {name: value, description: Task['description']}
+  //         );
+  // }
   function submitForm(event) {
     event.preventDefault();
     props.handleSubmitTask(Task);
@@ -49,9 +113,7 @@ function Form(props) {
         value={Task.description}
         onChange={handleChange}
       />
-      <label htmlFor="days">
-        How many days is the task due in/when would you like to have this done?
-      </label>
+      <label htmlFor="days">Enter task due date (MM-DD-YYYY·format)</label>
       <input
         type="text"
         name="days"
