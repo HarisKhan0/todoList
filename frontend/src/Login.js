@@ -28,6 +28,7 @@ function Login(props) {
         if (isCredentialValid) {
           setLoginStatus("Login successful!");
           // TODO store the username, used for creating new tasks, change to different page
+          window.location.href = "http://localhost:3000/TaskList";
         } else {
           setLoginStatus("Invalid username or password.");
         }
