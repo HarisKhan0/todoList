@@ -104,7 +104,7 @@ function TableBody(props) {
   return <tbody>{rows}</tbody>;
 }
 
-function Table(props) {
+function TaskList(props) {
   return (
     <table>
       <TableHeader />
@@ -121,4 +121,4 @@ function Table(props) {
   );
 }
 
-export default Table;
+export default TaskList;

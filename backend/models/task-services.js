@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const taskModel = require("./user");
+const taskModel = require("./task");
 mongoose.set("debug", true);
 
 mongoose

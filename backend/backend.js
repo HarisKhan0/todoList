@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 
-const userServices = require("./models/user-services");
+const taskServices = require("./models/task-services");
 
 const app = express();
 const port = 8000;
@@ -17,7 +17,7 @@ app.get("/users", async (req, res) => {
   const name = req.query["name"];
   const description = req.query["description"];
   try {
-    const result = await userServices.getTasks(name, description);
+    const result = await taskServices.getTasks(name, description);
     res.send({ task_list: result });
   } catch (error) {
     console.log(error);
@@ -27,7 +27,7 @@ app.get("/users", async (req, res) => {
 
 app.get("/users/:id", async (req, res) => {
   const id = req.params["id"];
-  const result = await userServices.findById(id);
+  const result = await taskServices.findById(id);
   if (result === undefined || result === null)
     res.status(404).send("Resource not found.");
   else {
@@ -39,14 +39,14 @@ app.post("/users", async (req, res) => {
   //adding task
   const task = req.body;
   //should work?
-  const savedTask = await userServices.addTask(task);
+  const savedTask = await taskServices.addTask(task);
   if (savedTask) res.status(201).send(savedTask);
   else res.status(500).end();
 });
 
 app.delete("/users/:id", async (req, res) => {
   const id = req.params["id"];
-  const result = await userServices.deleteTaskById(id);
+  const result = await taskServices.deleteTaskById(id);
   if (result === undefined || result === null)
     res.status(404).send("Resource not found.");
   else {

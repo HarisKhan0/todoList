@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Table from "./Table";
+import Table from "./TaskList";
 import Form from "./Form";
 import axios from "axios";
 
