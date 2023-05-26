@@ -16,16 +16,13 @@ jobs:
         node-version: [14.x, 16.x, 18.x]
         
     steps:
-      - name: Checkout backend
-        uses: actions/checkout@v3
-        with:
-          path: backend # Specify the path to the backend directory
-          
+      
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+          cache-dependency-path: ./backend/package-lock.json
 
       - name: Build Backend
         working-directory: backend
