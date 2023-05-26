@@ -6,6 +6,7 @@ import TaskList from "./TaskList";
 import CredentialList from "./CredentialList";
 import Form from "./Form";
 import Login from "./Login";
+import Wview from "./wview";
 
 function MyApp() {
   const [tasks, setTasks] = useState([]);
@@ -228,6 +229,7 @@ function MyApp() {
             path="/form"
             element={<Form handleSubmitTask={updateTaskList} />}
           ></Route>
+          <Route path="/wview" element={<Wview />} />
         </Routes>
       </div>
     </BrowserRouter>

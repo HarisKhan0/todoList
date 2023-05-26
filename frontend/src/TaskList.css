@@ -1,0 +1,25 @@
+.buttonleft { 
+    position: relative;
+    float: right;
+    padding: 20px 40px 20px 40px;
+    width: 50%;
+    background-color: rgb(231, 212, 179);
+}
+
+.buttontext {
+    position: absolute;
+    text-align: center;
+    font-size: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: lighter;
+}
+  
+.title {
+    font-family: 'Impact';
+    font-size: 100px;
+    color: rgb(101, 97, 97);
+    background-color: rgb(199, 194, 194);
+    display: inline;
+    text-align: center;
+    padding: 100px 100px 100px 173px;
+}

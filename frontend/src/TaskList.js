@@ -103,18 +103,27 @@ function TableBody(props) {
 
 function TaskList(props) {
   return (
-    <table>
-      <TaskListHeader />
-      <TableBody
-        taskData={props.taskData}
-        removeTask={props.removeTask}
-        toggleComplete={props.toggleComplete}
-        updateUrgency={props.updateUrgency}
-      />
-      <Link to="/form">
-        <button>Create New Task</button>
-      </Link>
-    </table>
+    <div>
+      <h1 className="title"> Task list view </h1>
+      <button
+        className="buttonleft"
+        onClick={() => (window.location.href = "/wview")}
+      >
+        Weekly View
+      </button>
+      <table>
+        <TaskListHeader />
+        <TableBody
+          taskData={props.taskData}
+          removeTask={props.removeTask}
+          toggleComplete={props.toggleComplete}
+          updateUrgency={props.updateUrgency}
+        />
+        <Link to="/form">
+          <button>Create New Task</button>
+        </Link>
+      </table>
+    </div>
   );
 }
 
