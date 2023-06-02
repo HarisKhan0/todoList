@@ -65,7 +65,6 @@ TaskSchema.methods.calculatePriority = function () {
   return this.difficulty + this.stress_rating - remainingDays;
 };
 
-
 TaskSchema.statics.sortPriority = function (callback) {
   return this.find({}).sort({ priority: -1 }).exec(callback);
 };
