@@ -172,8 +172,6 @@ function MyApp() {
     }
   }
 
-  // TODO Used for account creation, checks if username is unique
-
   useEffect(() => {
     // Updating tasks
     fetchAllTasks().then((result) => {
@@ -182,7 +180,6 @@ function MyApp() {
       }
     });
 
-    // TODO check if there is a better way to implement this?
     // Updating Credentials
     fetchAllCredentials().then((result) => {
       if (result) {
