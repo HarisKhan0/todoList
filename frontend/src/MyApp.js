@@ -11,12 +11,16 @@ import Wview from "./wview";
 function MyApp() {
   const [tasks, setTasks] = useState([]);
   const [credentials, setCredentials] = useState([]);
+  let currentUser = "Filler User";
+  // TODO field used to hold the username
 
   // Getting all tasks through backend
   async function fetchAllTasks() {
     try {
       const response = await axios.get("http://localhost:8000/tasks");
-      return response.data.task_list;
+      const tasks = response.data.task_list;
+      const filteredTasks = tasks.filter((task) => task.user === currentUser);
+      return filteredTasks;
     } catch (error) {
       console.log(error);
       return false;
@@ -156,7 +160,6 @@ function MyApp() {
       console.log(credentials);
 
       const isValid = credentials.some((credential) => {
-        //        console.log(credential);
         return (
           credential.username === credentialToCheck.username &&
           credential.password === credentialToCheck.password
@@ -171,6 +174,8 @@ function MyApp() {
       return false;
     }
   }
+
+  //  TODO store new credentials
 
   useEffect(() => {
     // Updating tasks
