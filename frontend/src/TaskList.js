@@ -115,7 +115,7 @@ function TaskList(props) {
         className="buttonright"
         onClick={() => (window.location.href = "/")}
       >
-        Weekly View
+        Logout
       </button>
       <table>
         <TaskListHeader />
