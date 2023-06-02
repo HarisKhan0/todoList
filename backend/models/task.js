@@ -54,9 +54,17 @@ TaskSchema.pre("save", function (next) {
   next();
 });
 
+// TaskSchema.methods.calculatePriority = function () {
+//   return this.difficulty + this.stress_rating - this.days_remaining;
+// };
 TaskSchema.methods.calculatePriority = function () {
-  return this.difficulty + this.stress_rating - this.days;
+  const currentTimestamp = new Date();
+  const dueTimestamp = this.days.getTime();
+  const remainingTime = dueTimestamp - currentTimestamp.getTime();
+  const remainingDays = Math.ceil(remainingTime / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
+  return this.difficulty + this.stress_rating - remainingDays;
 };
+
 
 TaskSchema.statics.sortPriority = function (callback) {
   return this.find({}).sort({ priority: -1 }).exec(callback);
