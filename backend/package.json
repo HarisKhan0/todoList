@@ -4,7 +4,7 @@
   "description": "",
   "main": "backend.js",
   "scripts": {
-    "test": "prettier --check . && jest --passWithNoTests",
+    "test": "eslint . && prettier --check . && jest --passWithNoTests",
     "coverage": "jest --passWithNoTests --collectCoverage --forceExit",
     "dev": "nodemon backend.js",
     "start": "node backend.js"
