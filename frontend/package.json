@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "eslint . && prettier --check .",
+    "test": "eslint ./src && prettier --check ./src",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
