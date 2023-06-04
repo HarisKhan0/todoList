@@ -51,38 +51,7 @@ function Form(props) {
       });
     }
   }
-  //     switch (name) {
-  //       case "description":
-  //         setTask({ ...Task, description: value });
-  //         break;
-  //       case "days":
-  //         setTask({ ...Task, days: parseInt(value) });
-  //         break;
-  //       case "difficulty":
-  //         setTask({ ...Task, difficulty: parseInt(value) });
-  //         break;
-  //       case "stress_rating":
-  //         setTask({ ...Task, stress_rating: parseInt(value) });
-  //         break;
-  //       default:
-  //         setTask({ ...Task, [name]: value });
-  //     }
-  // }
 
-  // function handleChange(event) {
-  //   const { name, value } = event.target;
-  //   if (name === "task_name")
-  //     setTask({name: Task['task_name'], description: value});
-  //   else if (name === "description")
-  //     setTask({name: Task['description'], description: value});
-  //   else if (name === "description")
-  //     setTask({name: Task['description'], description: value});
-
-  //     else
-  //         setTask(
-  //             {name: value, description: Task['description']}
-  //         );
-  // }
   function submitForm(event) {
     event.preventDefault();
     props.handleSubmitTask(Task);
