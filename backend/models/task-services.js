@@ -5,16 +5,6 @@ async function getTasks() {
   return await taskModel.find().sort({ priority: -1 });
 }
 
-// Return a task with id
-async function findTaskById(id) {
-  try {
-    return await taskModel.findTaskById(id);
-  } catch (error) {
-    console.log(error);
-    return undefined;
-  }
-}
-
 async function addTask(task) {
   try {
     const taskToAdd = new taskModel(task);
@@ -36,6 +26,5 @@ async function deleteTaskById(id) {
 }
 
 exports.getTasks = getTasks;
-exports.findTaskById = findTaskById;
 exports.addTask = addTask;
 exports.deleteTaskById = deleteTaskById;
