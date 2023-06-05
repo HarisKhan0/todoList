@@ -8,9 +8,7 @@ ListIt is an intuitive todo list application for students and young professional
 
 ## UI Prototype
 
-Our intitial UI prototype produced on Figma can be found at the following link:
-
-https://www.figma.com/file/F2zLCdkTA1iBqbnejYWYgY/ListIt?type=design&node-id=0%3A1&t=TaABfoWTTAxYEwVC-1
+Our intitial UI prototype produced on Figma can be found [here](https://www.figma.com/file/F2zLCdkTA1iBqbnejYWYgY/ListIt?type=design&node-id=0%3A1&t=TaABfoWTTAxYEwVC-1).
 
 Last updated: 06/02/23
 
