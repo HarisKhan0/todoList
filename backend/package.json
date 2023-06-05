@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "backend.js",
   "scripts": {
     "test": "eslint . && prettier --check . && jest --passWithNoTests",
@@ -28,5 +27,6 @@
     "nodemon": "^2.0.22",
     "prettier": "^2.8.8"
   },
-  "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+  "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+  "description": ""
 }

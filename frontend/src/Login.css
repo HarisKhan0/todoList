@@ -2,14 +2,6 @@ Home {
   padding: 20px;
 }
 
-.Login-Signup {
-  position: relative;
-  width: 1440px;
-  height: 1024px;
-
-  background: #ffffff;
-}
-
 .GrayRectangle {
   position: absolute;
   width: 1000px;
@@ -20,7 +12,7 @@ Home {
   background: #d9d9d9;
 }
 
-.ListIt {
+.ListItHeader {
   position: absolute;
   font-family: "Inter";
   font-style: normal;
@@ -31,7 +23,7 @@ Home {
   color: #000000;
 }
 
-.buttontext1 {
+.loginbutton {
   position: absolute;
   width: 350px;
   height: 58px;
@@ -39,7 +31,7 @@ Home {
   top: 605px;
 }
 
-.buttontext2 {
+.passwordbutton {
   position: absolute;
   width: 350px;
   height: 58px;
@@ -47,14 +39,14 @@ Home {
   top: 605px;
 }
 
-.username {
+.usernamefield {
   position: absolute;
   width: 600px;
   left: 208px;
   top: 250px;
 }
 
-.password {
+.passwordfield {
   position: absolute;
   width: 600px;
   left: 208px;

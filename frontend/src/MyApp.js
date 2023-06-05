@@ -193,7 +193,7 @@ function MyApp() {
 
   return (
     <BrowserRouter>
-      <div className="container">
+      <div>
         <Routes>
           <Route
             path="/"
@@ -229,7 +229,7 @@ function MyApp() {
             path="/form"
             element={<Form handleSubmitTask={updateTaskList} />}
           ></Route>
-          <Route path="/wview" element={<Wview />} />
+          <Route path="/wview" element={<Wview taskData={tasks} />} />
         </Routes>
       </div>
     </BrowserRouter>
