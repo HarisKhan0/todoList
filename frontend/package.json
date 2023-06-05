@@ -44,5 +44,9 @@
     "eslint-plugin-react": "^7.32.2",
     "prettier": "^2.8.8"
   },
-  "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+  "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+  "main": ".eslintrc.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

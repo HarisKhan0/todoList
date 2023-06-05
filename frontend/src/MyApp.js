@@ -193,7 +193,7 @@ function MyApp() {
 
   return (
     <BrowserRouter>
-      <div className="container">
+      <div>
         <Routes>
           <Route
             path="/"
