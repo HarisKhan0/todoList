@@ -100,7 +100,7 @@ function Form(props) {
         id="days"
         selected={task.days ? new Date(task.days) : null}
         onChange={handleDateChange}
-        dateFormat="mm/dd/yyyy"
+        dateFormat="MM/dd/yyyy"
         className="date-picker"
       />
 
