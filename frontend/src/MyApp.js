@@ -11,8 +11,7 @@ import Wview from "./wview";
 function MyApp() {
   const [tasks, setTasks] = useState([]);
   const [credentials, setCredentials] = useState([]);
-  let currentUser = "Filler User";
-  // TODO field used to hold the username
+  let currentUser = "Filler User"; // TODO
 
   // Getting all tasks through backend
   async function fetchAllTasks() {
@@ -146,8 +145,6 @@ function MyApp() {
     });
   }
 
-  // TODO this is not working, "filter is not a function"
-  //    fetchAllCredentials is not returning an array?
   // Checks if login credentials is valid
   async function isCredentialValid(credentialToCheck) {
     try {
@@ -166,8 +163,6 @@ function MyApp() {
         );
       });
 
-      console.log("IsValid: " + isValid);
-
       return isValid;
     } catch (error) {
       console.log(error);
@@ -176,6 +171,24 @@ function MyApp() {
   }
 
   //  TODO store new credentials
+  // this will take in credentials, using those credentials, fetch the id
+  async function storeCredential(credentialToStore) {
+    try {
+      if (isCredentialValid(credentialToStore)) {
+        const userId = credentials
+          .filter(
+            (credential) => credential.username === credentialToStore.username
+          )
+          .map((credential) => credential.username);
+        console.log("UserId: " + userId);
+        currentUser = userId; // TODO
+        return true;
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
 
   useEffect(() => {
     // Updating tasks
@@ -203,6 +216,7 @@ function MyApp() {
               <Login
                 handleSubmitCredential={updateCredentialList}
                 isCredentialValid={isCredentialValid}
+                storeCredential={storeCredential}
               />
             }
             s
