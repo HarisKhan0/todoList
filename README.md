@@ -1,8 +1,26 @@
-# Todo List [![Node.js CI](https://github.com/HarisKhan0/todoList/actions/workflows/node.js.yml/badge.svg)](https://github.com/HarisKhan0/todoList/actions/workflows/node.js.yml)
+# ListIt [![Node.js CI](https://github.com/HarisKhan0/todoList/actions/workflows/node.js.yml/badge.svg)](https://github.com/HarisKhan0/todoList/actions/workflows/node.js.yml)
 
 ### Contributors: Sam Todd, Winton Gee, Hamza Aziz, Haris Khan, Bill Chan
 
-## Style Guide:
+## Project Description:
+
+ListIt is an intuitive todo list application for students and young professionals. The application has unique features like priority assignment for tasks, color coordination, and grouping settings. ListIt provides users with a form to create new items, a table view of their upcoming tasks, and a weekly view to more easily visualize upcoming deadlines. Unlike notion or the notes app, ListIt is focused around crafting a central user experience that is unique to each user and their respective tasks. 
+
+## UI Prototype
+
+Our intitial UI prototype produced on Figma can be found at the following link:
+
+https://www.figma.com/file/F2zLCdkTA1iBqbnejYWYgY/ListIt?type=design&node-id=0%3A1&t=TaABfoWTTAxYEwVC-1
+
+Last updated: 06/02/23
+
+## Class Diagram
+
+[Include Link to Class Diagrams Wikipage here]
+
+## Development Enviornment Setup
+
+### Style Guide:
 
 Filenames: lower snake case
 
@@ -28,7 +46,7 @@ Commands for installing Style Checker:
 Instructions for installing IDE instructons:
 Followed Canvas instructions for ESLint and then installed VSCode extenion locally.
 
-## ESLint Setup Instructions
+### Linter Setup
 
 Note: You will need to do this twice, for frontend and backend
 
