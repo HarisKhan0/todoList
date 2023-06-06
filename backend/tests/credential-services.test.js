@@ -1,38 +1,68 @@
-const myModel = require('../models/credential.js');
-const myFunctions = require('../models/credential-services.js');
+const credentialServices = require("../models/credential-services");
+const db = require("./db");
 
-
-// addCredential, getCredentials
-test('Testing addCredential and getCredentials -- success', () => {
-  // Get the initial number of credentials
-  const initialCredentials = myFunctions.getCredentials();
-  const initialCredentialCount = initialCredentials.length;
-
-  // Perform the action that should change the number of credentials (e.g., add or delete a credential)
-  const credentialToAdd = { username: "TestUsername123", password: "TestPassword123" };
-  myFunctions.addCredential(credentialToAdd);
-
-  // Call the getCredentials function again
-  const updatedCredentials = myFunctions.getCredentials();
-  const updatedCredentialCount = updatedCredentials.length + 1;
-
-  // Check if the number of credentials has changed
-  expect(updatedCredentialCount).not.toBe(0);
-  expect(updatedCredentialCount).not.toBe(initialCredentialCount);
+beforeAll(async () => {
+  await db.connectTempDataBase();
 });
 
-// findCredentialById, deleteCredentialById
-test('Testing findCredentialById and deleteCredentialById -- success', () => {
-  // Get the initial number of credentials
-  const initialCredentials = myFunctions.getCredentials();
+afterEach(async () => {
+  await db.clearTempDatabase();
+});
 
-  if (initialCredentials.length > 0) {
-    // Perform the action that should change the number of credentials (e.g., add or delete a credential)
-      const credentialToTest = initialCredentials[0];
-      myFunctions.findCredentialById(credentialToTest.params["id"]);
-      expect(5).not.toBe(0);
+afterAll(async () => {
+  await db.closeTempDatabase();
+});
 
+describe("Credential created", () => {
+  it("Add credential works", async () => {
+    const credentialInput = {
+      username: "myusername",
+      password: "password123",
+    };
 
-  }
+    await credentialServices.addCredential(credentialInput);
 
+    const result = await credentialServices.getCredentials();
+
+    expect(result[0].username).toBe("myusername");
+  });
+
+  it("Add credential errors", async () => {
+    const credentialInput = {
+      field: "tree",
+    };
+
+    const result = await credentialServices.addCredential(credentialInput);
+
+    expect(result).toBeFalsy();
+  });
+
+  it("Delete credential by ID works", async () => {
+    const credentialInput = {
+      username: "myusername",
+      password: "password123",
+    };
+
+    await credentialServices.addCredential(credentialInput);
+
+    const credentials = await credentialServices.getCredentials();
+
+    const firstCredential = credentials[0];
+
+    const firstCredentialID = firstCredential._id;
+
+    const deletedCredential = await credentialServices.deleteCredentialById(
+      firstCredentialID
+    );
+
+    expect(firstCredential).toEqual(deletedCredential);
+  });
+
+  it("Delete credential by ID errors", async () => {
+    const deletedCredential = await credentialServices.deleteCredentialById(
+      "1"
+    );
+
+    expect(deletedCredential).toEqual(undefined);
+  });
 });

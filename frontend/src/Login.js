@@ -51,8 +51,8 @@ function Login(props) {
 
   return (
     <div className="GrayRectangle">
-      <div className="ListIt">ListIt!</div>
-      <div className="username">
+      <div className="ListItHeader">ListIt!</div>
+      <div className="usernamefield">
         <label htmlFor="username">Username</label>
         <input
           style={{ backgroundColor: "white" }}
@@ -63,7 +63,7 @@ function Login(props) {
           onChange={handleChange}
         />
       </div>
-      <div className="password">
+      <div className="passwordfield">
         <label htmlFor="password">Password</label>
         <input
           style={{ backgroundColor: "white" }}
@@ -75,13 +75,13 @@ function Login(props) {
         />
       </div>
       <input
-        className="buttontext1"
+        className="loginbutton"
         type="button"
         value="Login"
         onClick={(event) => submitLogin(event)}
       />
       <input
-        className="buttontext2"
+        className="passwordbutton"
         type="button"
         value="Create Account"
         onClick={(event) => submitCreateAccount(event)}

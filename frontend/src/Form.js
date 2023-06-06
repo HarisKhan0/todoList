@@ -1,99 +1,79 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./Form.css";
 
 function Form(props) {
-  const [Task, setTask] = useState({
+  const [task, setTask] = useState({
     user: "Filler User",
     task_name: "",
     task_description: "",
     days: "",
-    difficulty: "",
-    stress_rating: "",
+    difficulty: 0,
+    stress_rating: 0,
   });
 
   function handleChange(event) {
     const { name, value } = event.target;
-    //setTask({
-    //     ...Task,
-    //     [name]: value,
-    //   });
-    // }
 
-    if (name === "task_name") {
-      setTask({
-        ...Task,
-        task_name: value,
-      });
-    } else if (name === "task_description") {
-      setTask({
-        ...Task,
-        task_description: value,
-      });
-    } else if (name === "days") {
-      setTask({
-        ...Task,
-        days: value,
-      });
-    } else if (name === "difficulty") {
-      setTask({
-        ...Task,
-        difficulty: value,
-      });
-    } else if (name === "stress_rating") {
-      setTask({
-        ...Task,
-        stress_rating: value,
-      });
-    } else if (name === "due_date") {
-      setTask({
-        ...Task,
-        due_date: value,
-      });
-    }
+    setTask({
+      ...task,
+      [name]: value,
+    });
   }
-  //     switch (name) {
-  //       case "description":
-  //         setTask({ ...Task, description: value });
-  //         break;
-  //       case "days":
-  //         setTask({ ...Task, days: parseInt(value) });
-  //         break;
-  //       case "difficulty":
-  //         setTask({ ...Task, difficulty: parseInt(value) });
-  //         break;
-  //       case "stress_rating":
-  //         setTask({ ...Task, stress_rating: parseInt(value) });
-  //         break;
-  //       default:
-  //         setTask({ ...Task, [name]: value });
-  //     }
-  // }
 
-  // function handleChange(event) {
-  //   const { name, value } = event.target;
-  //   if (name === "task_name")
-  //     setTask({name: Task['task_name'], description: value});
-  //   else if (name === "description")
-  //     setTask({name: Task['description'], description: value});
-  //   else if (name === "description")
-  //     setTask({name: Task['description'], description: value});
+  // this is used for the react-datepicker
+  function handleDateChange(date) {
+    const days = date ? formatDate(date) : "";
+    setTask({
+      ...task,
+      days,
+    });
+  }
 
-  //     else
-  //         setTask(
-  //             {name: value, description: Task['description']}
-  //         );
-  // }
+  // this is because the backend expects a string for the date
+  function formatDate(date) {
+    const year = date.getFullYear();
+    let month = (date.getMonth() + 1).toString();
+    let day = date.getDate().toString();
+
+    if (month.length === 1) {
+      month = "0" + month;
+    }
+
+    if (day.length === 1) {
+      day = "0" + day;
+    }
+
+    return `${month}/${day}/${year}`;
+  }
+
   function submitForm(event) {
     event.preventDefault();
-    props.handleSubmitTask(Task);
+    props.handleSubmitTask(task);
     setTask({
-      name: "",
-      description: "",
-      days: 0,
+      user: "Filler User",
+      task_name: "",
+      task_description: "",
+      days: "",
       difficulty: 0,
       stress_rating: 0,
     });
   }
+
+  // this adds tick marks to the sliding bar
+  function generateTickMarks(min, max, step) {
+    const tickMarks = [];
+
+    for (let i = min; i <= max; i += step) {
+      tickMarks.push(i);
+    }
+
+    return tickMarks;
+  }
+
+  const tickMarks = generateTickMarks(1, 10, 1);
 
   return (
     <form>
@@ -102,55 +82,88 @@ function Form(props) {
         type="text"
         name="task_name"
         id="task_name"
-        value={Task.name}
+        value={task.task_name}
         onChange={handleChange}
       />
       <label htmlFor="task_description">Task Description</label>
-      <input
-        type="text"
+      <textarea
         name="task_description"
         id="task_description"
-        value={Task.description}
+        value={task.task_description}
         onChange={handleChange}
+        rows={4}
       />
-      <label htmlFor="days">Enter task due date (MM-DD-YYYY·format)</label>
-      <input
-        type="text"
+
+      <label htmlFor="days">Task Due Date</label>
+      <DatePicker
         name="days"
         id="days"
-        value={Task.days}
-        onChange={handleChange}
+        selected={task.days ? new Date(task.days) : null}
+        onChange={handleDateChange}
+        dateFormat="MM/dd/yyyy"
+        className="date-picker"
       />
 
       <label htmlFor="difficulty">
         How important is this task on a scale of 1 to 10?
       </label>
       <input
-        type="text"
+        type="range"
         name="difficulty"
         id="difficulty"
-        value={Task.difficulty}
+        min="1"
+        max="10"
+        step="1"
+        value={task.difficulty}
         onChange={handleChange}
+        list="difficulty-tick-marks"
       />
+      <datalist id="difficulty-tick-marks">
+        {tickMarks.map((tick) => (
+          <option key={tick} value={tick} />
+        ))}
+      </datalist>
+      <div className="tick-marks">
+        {tickMarks.map((tick) => (
+          <span key={tick}>{tick}</span>
+        ))}
+      </div>
+
       <label htmlFor="stress_rating">
         How stressed is this task making you feel on a scale of 1 to 10?
       </label>
       <input
-        type="text"
+        type="range"
         name="stress_rating"
         id="stress_rating"
-        value={Task.stress_rating}
+        min="1"
+        max="10"
+        step="1"
+        value={task.stress_rating}
         onChange={handleChange}
+        list="stress-rating-tick-marks"
       />
+      <datalist id="stress-rating-tick-marks">
+        {tickMarks.map((tick) => (
+          <option key={tick} value={tick} />
+        ))}
+      </datalist>
+      <div className="tick-marks">
+        {tickMarks.map((tick) => (
+          <span key={tick}>{tick}</span>
+        ))}
+      </div>
 
-      <input
-        type="button"
-        value="Add Task"
-        onClick={(event) => submitForm(event)}
-      />
-      <Link to="/TaskList">
-        <button>View Todo List</button>
-      </Link>
+      <div className="button-container">
+        <input
+          type="button"
+          value="Add Task"
+          onClick={(event) => submitForm(event)}
+        />
+        <Link to="/TaskList">
+          <button>View Todo List</button>
+        </Link>
+      </div>
     </form>
   );
 }
