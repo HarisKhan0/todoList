@@ -11,6 +11,10 @@ on:
 
 jobs:
   build:
+    defaults:
+      run:
+        working-directory: ./backend
+        
     runs-on: ubuntu-latest
 
     steps:
@@ -34,6 +38,10 @@ jobs:
           path: .
 
   deploy:
+    defaults:
+      run:
+        working-directory: ./backend
+    
     runs-on: ubuntu-latest
     needs: build
     environment:
