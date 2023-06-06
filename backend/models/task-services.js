@@ -1,30 +1,42 @@
 const taskModel = require("./task");
+const credentialModel = require("./credential");
 
 // Gets all tasks in sorted priority
 async function getTasks() {
   return await taskModel.find().sort({ priority: -1 });
 }
 
-// Return a task with id
-async function findTaskById(id) {
-  try {
-    return await taskModel.findTaskById(id);
-  } catch (error) {
-    console.log(error);
-    return undefined;
-  }
-}
-
 async function addTask(task) {
   try {
-    const taskToAdd = new taskModel(task);
+    const user = await credentialModel.findOne({ username: task.user });
+    if (!user) {
+      throw new Error("User not found.");
+    }
+
+    const taskToAdd = new taskModel.Task({
+      user: user._id,
+      task_name: task.task_name,
+      task_description: task.task_description,
+      days: task.days,
+      difficulty: task.difficulty,
+      stress_rating: task.stress_rating,
+      priority: task.priority,
+      color: task.color,
+    });
+
     const savedTask = await taskToAdd.save();
+
+    // Update the user's tasks array
+    user.tasks.push(savedTask._id);
+    await user.save();
+
     return savedTask;
   } catch (error) {
     console.log(error);
     return false;
   }
 }
+
 
 async function deleteTaskById(id) {
   try {
@@ -36,6 +48,5 @@ async function deleteTaskById(id) {
 }
 
 exports.getTasks = getTasks;
-exports.findTaskById = findTaskById;
 exports.addTask = addTask;
 exports.deleteTaskById = deleteTaskById;

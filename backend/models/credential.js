@@ -1,27 +1,32 @@
-const mongoose = require("mongoose");
+  const mongoose = require("mongoose");
 
-// TODO make username unique
-const CredentialSchema = new mongoose.Schema(
-  {
-    username: {
-      type: String,
-      required: true,
-      trim: true,
+  // TODO make username unique
+  const CredentialSchema = new mongoose.Schema(
+    {
+      username: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+      },
+      password: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+      tasks: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Task',
+      }],
     },
-    password: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-  },
-  { collection: "credential_list" }
-);
+    { collection: "credential_list" }
+  );
 
-// TODO check save
-CredentialSchema.pre("save", function (next) {
-  next();
-});
+  // TODO check save
+  CredentialSchema.pre("save", function (next) {
+    next();
+  });
 
-const Credential = mongoose.model("Credential", CredentialSchema);
+  const Credential = mongoose.model("Credential", CredentialSchema);
 
-module.exports = Credential;
+  module.exports = Credential;
