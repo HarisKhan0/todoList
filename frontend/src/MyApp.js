@@ -11,6 +11,7 @@ import Wview from "./wview";
 function MyApp() {
   const [tasks, setTasks] = useState([]);
   const [credentials, setCredentials] = useState([]);
+  const [currentUser, setCurrentUser] = useState("Default Current User");
 
   // Getting all tasks through backend
   async function fetchAllTasks() {
@@ -126,6 +127,10 @@ function MyApp() {
 
   // Stores a task
   function updateTaskList(task) {
+    // TODO remove this
+    // This is used for debugging which one is the current user
+    console.log(currentUser);
+
     makeTaskPostCall(task).then((result) => {
       if (result && result.status === 201) {
         setTasks([...tasks, result.data]);
@@ -142,29 +147,18 @@ function MyApp() {
     });
   }
 
-  // TODO this is not working, "filter is not a function"
-  //    fetchAllCredentials is not returning an array?
   // Checks if login credentials is valid
   async function isCredentialValid(credentialToCheck) {
     try {
       const credentials = await fetchAllCredentials();
-
-      if (!credentials) {
-        return false;
-      }
-
-      console.log(credentials);
-
-      const isValid = credentials.some((credential) => {
-        //        console.log(credential);
-        return (
-          credential.username === credentialToCheck.username &&
-          credential.password === credentialToCheck.password
-        );
-      });
-
-      console.log("IsValid: " + isValid);
-
+      const isValid =
+        credentials &&
+        credentials.some((credential) => {
+          return (
+            credential.username === credentialToCheck.username &&
+            credential.password === credentialToCheck.password
+          );
+        });
       return isValid;
     } catch (error) {
       console.log(error);
@@ -172,7 +166,19 @@ function MyApp() {
     }
   }
 
-  // TODO Used for account creation, checks if username is unique
+  // TODO create a function that updates currentUser
+  function updateCurrentUser(credentialData) {
+    try {
+      console.log(
+        "Current: " + currentUser + ", New: " + credentialData.username
+      );
+      setCurrentUser(credentialData.username);
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
 
   useEffect(() => {
     // Updating tasks
@@ -201,6 +207,7 @@ function MyApp() {
               <Login
                 handleSubmitCredential={updateCredentialList}
                 isCredentialValid={isCredentialValid}
+                updateCurrentUser={updateCurrentUser}
               />
             }
             s

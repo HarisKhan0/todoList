@@ -23,12 +23,11 @@ function Login(props) {
   function submitLogin(event) {
     event.preventDefault();
     setLoginStatus("Logging in...");
+    props.updateCurrentUser(Credential);
     props
       .isCredentialValid(Credential)
       .then((isCredentialValid) => {
         if (isCredentialValid) {
-          setLoginStatus("Login successful!");
-          // TODO store the username, used for creating new tasks, change to different page
           window.location.href = "http://localhost:3000/TaskList";
         } else {
           setLoginStatus("Invalid username or password.");
