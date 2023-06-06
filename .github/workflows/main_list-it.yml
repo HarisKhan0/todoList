@@ -1,3 +1,6 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
 name: Build and deploy Node.js app to Azure Web App - list-it
 
 on:
@@ -8,10 +11,6 @@ on:
 
 jobs:
   build:
-    defaults:
-      run:
-        working-directory: ./backend
-
     runs-on: ubuntu-latest
 
     steps:
@@ -27,8 +26,8 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-        working-directory: backend
-
+          working-directory: backend
+          
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -36,10 +35,6 @@ jobs:
           path: .
 
   deploy:
-    defaults:
-      run:
-        working-directory: ./backend
-
     runs-on: ubuntu-latest
     needs: build
     environment:
