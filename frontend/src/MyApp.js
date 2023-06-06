@@ -11,15 +11,12 @@ import Wview from "./wview";
 function MyApp() {
   const [tasks, setTasks] = useState([]);
   const [credentials, setCredentials] = useState([]);
-  let currentUser = "Current Filler User"; // TODO
 
   // Getting all tasks through backend
   async function fetchAllTasks() {
     try {
       const response = await axios.get("http://localhost:8000/tasks");
-      const tasks = response.data.task_list;
-      const filteredTasks = tasks.filter((task) => task.user === currentUser);
-      return filteredTasks;
+      return response.data.task_list;
     } catch (error) {
       console.log(error);
       return false;
@@ -145,6 +142,8 @@ function MyApp() {
     });
   }
 
+  // TODO this is not working, "filter is not a function"
+  //    fetchAllCredentials is not returning an array?
   // Checks if login credentials is valid
   async function isCredentialValid(credentialToCheck) {
     try {
@@ -157,11 +156,14 @@ function MyApp() {
       console.log(credentials);
 
       const isValid = credentials.some((credential) => {
+        //        console.log(credential);
         return (
           credential.username === credentialToCheck.username &&
           credential.password === credentialToCheck.password
         );
       });
+
+      console.log("IsValid: " + isValid);
 
       return isValid;
     } catch (error) {
@@ -170,25 +172,7 @@ function MyApp() {
     }
   }
 
-  //  TODO store new credentials
-  // this will take in credentials, using those credentials, fetch the id
-  async function storeCredential(credentialToStore) {
-    try {
-      if (isCredentialValid(credentialToStore)) {
-        const userId = credentials
-          .filter(
-            (credential) => credential.username === credentialToStore.username
-          )
-          .map((credential) => credential.username);
-        console.log("UserId: " + userId);
-        currentUser = userId; // TODO
-        return true;
-      }
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
+  // TODO Used for account creation, checks if username is unique
 
   useEffect(() => {
     // Updating tasks
@@ -198,6 +182,7 @@ function MyApp() {
       }
     });
 
+    // TODO check if there is a better way to implement this?
     // Updating Credentials
     fetchAllCredentials().then((result) => {
       if (result) {
@@ -216,7 +201,6 @@ function MyApp() {
               <Login
                 handleSubmitCredential={updateCredentialList}
                 isCredentialValid={isCredentialValid}
-                storeCredential={storeCredential}
               />
             }
             s
