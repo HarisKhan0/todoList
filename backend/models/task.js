@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const TaskSchema = new mongoose.Schema(
   {
     user: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Credential',
       required: true,
-      trim: true,
     },
     task_name: {
       type: String,

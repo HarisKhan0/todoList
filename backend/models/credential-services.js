@@ -13,6 +13,10 @@ async function getCredentials() {
 // Stores a credential
 async function addCredential(credential) {
   try {
+    if (!credential.username || !credential.password) {
+      throw new Error("Username and password are required.");
+    }
+
     const credentialToAdd = new credentialModel(credential);
     const savedCredential = await credentialToAdd.save();
     return savedCredential;
