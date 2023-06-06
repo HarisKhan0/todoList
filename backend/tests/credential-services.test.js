@@ -3,7 +3,7 @@ const myFunctions = require('../models/credential-services.js');
 
 
 // addCredential, getCredentials
-test('Testing addCredential and getCredentials -- success', async () => {
+test('Testing addCredential and getCredentials -- success', () => {
   // Get the initial number of credentials
   const initialCredentials = myFunctions.getCredentials();
   const initialCredentialCount = initialCredentials.length;
@@ -22,7 +22,7 @@ test('Testing addCredential and getCredentials -- success', async () => {
 });
 
 // findCredentialById, deleteCredentialById
-test('Testing findCredentialById and deleteCredentialById -- success', async () => {
+test('Testing findCredentialById and deleteCredentialById -- success', () => {
   // Get the initial number of credentials
   const initialCredentials = myFunctions.getCredentials();
 

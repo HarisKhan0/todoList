@@ -11,7 +11,7 @@ import Wview from "./wview";
 function MyApp() {
   const [tasks, setTasks] = useState([]);
   const [credentials, setCredentials] = useState([]);
-  let currentUser = "Filler User"; // TODO
+  let currentUser = "Current Filler User"; // TODO
 
   // Getting all tasks through backend
   async function fetchAllTasks() {
