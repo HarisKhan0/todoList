@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOMClient from "react-dom/client";
 import MyApp from "./MyApp";
 import "./index.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 const container = document.getElementById("root");
 
