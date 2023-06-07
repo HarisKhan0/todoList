@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Login.css";
-// import { Link } from "react-router-dom";
 
 function Login(props) {
   // Login status object
@@ -41,9 +40,6 @@ function Login(props) {
 
   function submitCreateAccount(event) {
     event.preventDefault();
-    setLoginStatus("Creating account...");
-    // TODO check if the username is unique
-
     setLoginStatus("Account created!");
     props.handleSubmitCredential(Credential);
   }

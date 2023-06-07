@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 
 import TaskList from "./TaskList";
-import CredentialList from "./CredentialList";
 import Form from "./Form";
 import Login from "./Login";
 import Wview from "./wview";
@@ -15,17 +14,6 @@ function MyApp() {
   //  var currentUser = "Default Current User";
 
   // Getting all tasks through backend
-  //  async function fetchAllTasks() {
-  //    try {
-  //      const response = await axios.get("http://localhost:8000/tasks");
-  //      // TODO apply a filter that matches currentUser
-  //      return response.data.task_list;
-  //    } catch (error) {
-  //      console.log(error);
-  //      return false;
-  //    }
-  //  }
-
   async function fetchAllTasks() {
     try {
       const response = await axios.get("http://localhost:8000/tasks");
@@ -109,19 +97,6 @@ function MyApp() {
     }
   }
 
-  // Delete a credential through backend
-  async function makeCredentialDeleteCall(_id) {
-    try {
-      const response = await axios.delete(
-        `http://localhost:8000/credentials/${_id}`
-      );
-      return response;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
-
   // Remove task at the given index
   function removeOneTask(index) {
     const deletedTask = tasks.find((task, i) => i === index);
@@ -130,18 +105,6 @@ function MyApp() {
       if (result && result.status === 204) {
         const updated = tasks.filter((task, i) => i !== index);
         setTasks(updated);
-      }
-    });
-  }
-
-  // Remove credential at the given index
-  function removeOneCredential(index) {
-    const deletedCredential = credentials.find((task, i) => i === index);
-
-    makeCredentialDeleteCall(deletedCredential._id).then((result) => {
-      if (result && result.status === 204) {
-        const updated = credentials.filter((task, i) => i !== index);
-        setCredentials(updated);
       }
     });
   }
@@ -243,15 +206,6 @@ function MyApp() {
                 removeTask={removeOneTask}
                 toggleComplete={toggleComplete}
                 updateUrgency={updateUrgency}
-              />
-            }
-          ></Route>
-          <Route
-            path="/CredentialList"
-            element={
-              <CredentialList
-                credentialData={credentials}
-                removeCredential={removeOneCredential}
               />
             }
           ></Route>
