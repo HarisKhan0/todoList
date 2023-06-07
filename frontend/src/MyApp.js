@@ -11,17 +11,39 @@ import Wview from "./wview";
 function MyApp() {
   const [tasks, setTasks] = useState([]);
   const [credentials, setCredentials] = useState([]);
+  // Note: This isn't working, so I'm using local storage, this is probably bad practice
+  //  var currentUser = "Default Current User";
 
   // Getting all tasks through backend
+  //  async function fetchAllTasks() {
+  //    try {
+  //      const response = await axios.get("http://localhost:8000/tasks");
+  //      // TODO apply a filter that matches currentUser
+  //      return response.data.task_list;
+  //    } catch (error) {
+  //      console.log(error);
+  //      return false;
+  //    }
+  //  }
+
   async function fetchAllTasks() {
     try {
       const response = await axios.get("http://localhost:8000/tasks");
-      return response.data.task_list;
+
+      const storedData = localStorage.getItem("currentUser");
+      const currentUser = storedData ? JSON.parse(storedData) : "defaultValue";
+
+      // Apply a filter that matches the currentUser
+      const filteredTasks = response.data.task_list.filter(
+        (task) => task.user === currentUser
+      );
+      return filteredTasks;
     } catch (error) {
       console.log(error);
       return false;
     }
   }
+
   // added function to indicate complete if a task is complete
   function toggleComplete(index) {
     const updatedTasks = tasks.map((task, i) => {
@@ -126,6 +148,10 @@ function MyApp() {
 
   // Stores a task
   function updateTaskList(task) {
+    const storedData = localStorage.getItem("currentUser");
+    const myVariable = storedData ? JSON.parse(storedData) : "defaultValue";
+    console.log("Current User: " + myVariable);
+
     makeTaskPostCall(task).then((result) => {
       if (result && result.status === 201) {
         setTasks([...tasks, result.data]);
@@ -142,29 +168,18 @@ function MyApp() {
     });
   }
 
-  // TODO this is not working, "filter is not a function"
-  //    fetchAllCredentials is not returning an array?
   // Checks if login credentials is valid
   async function isCredentialValid(credentialToCheck) {
     try {
       const credentials = await fetchAllCredentials();
-
-      if (!credentials) {
-        return false;
-      }
-
-      console.log(credentials);
-
-      const isValid = credentials.some((credential) => {
-        //        console.log(credential);
-        return (
-          credential.username === credentialToCheck.username &&
-          credential.password === credentialToCheck.password
-        );
-      });
-
-      console.log("IsValid: " + isValid);
-
+      const isValid =
+        credentials &&
+        credentials.some((credential) => {
+          return (
+            credential.username === credentialToCheck.username &&
+            credential.password === credentialToCheck.password
+          );
+        });
       return isValid;
     } catch (error) {
       console.log(error);
@@ -172,7 +187,22 @@ function MyApp() {
     }
   }
 
-  // TODO Used for account creation, checks if username is unique
+  // Updates current user
+  function updateCurrentUser(credentialData) {
+    try {
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify(credentialData.username)
+      );
+      const storedData = localStorage.getItem("currentUser");
+      const myVariable = storedData ? JSON.parse(storedData) : "defaultValue";
+      console.log("(After Setting) Current: " + myVariable);
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
 
   useEffect(() => {
     // Updating tasks
@@ -182,7 +212,6 @@ function MyApp() {
       }
     });
 
-    // TODO check if there is a better way to implement this?
     // Updating Credentials
     fetchAllCredentials().then((result) => {
       if (result) {
@@ -201,6 +230,7 @@ function MyApp() {
               <Login
                 handleSubmitCredential={updateCredentialList}
                 isCredentialValid={isCredentialValid}
+                updateCurrentUser={updateCurrentUser}
               />
             }
             s

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-// TODO make username unique
 const CredentialSchema = new mongoose.Schema(
   {
     username: {
@@ -17,7 +16,6 @@ const CredentialSchema = new mongoose.Schema(
   { collection: "credential_list" }
 );
 
-// TODO check save
 CredentialSchema.pre("save", function (next) {
   next();
 });
