@@ -162,7 +162,7 @@ calendarboxright {
   background: #eeeeee;
 }
 
-.line {
+.line-padded {
   height: 5px;
   background-color: black;
   font-weight: bold;

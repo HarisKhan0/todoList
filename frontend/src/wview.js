@@ -100,7 +100,7 @@ const WeeklyViewCalendar = ({ taskData }) => {
           </h1>
           <button onClick={nextWeek}>Next Week</button>
         </div>
-        <div className="line-padded" />
+        <div className="line" />
         <ul style={weekStyle}>
           {weekDays.map((day) => {
             const dayTasks = taskData.filter(
