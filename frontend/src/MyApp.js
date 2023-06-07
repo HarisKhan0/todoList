@@ -11,18 +11,39 @@ import Wview from "./wview";
 function MyApp() {
   const [tasks, setTasks] = useState([]);
   const [credentials, setCredentials] = useState([]);
-  const [currentUser, setCurrentUser] = useState("Default Current User");
+  // Note: This isn't working, so I'm using local storage, this is probably bad practice
+  //  var currentUser = "Default Current User";
 
   // Getting all tasks through backend
+  //  async function fetchAllTasks() {
+  //    try {
+  //      const response = await axios.get("http://localhost:8000/tasks");
+  //      // TODO apply a filter that matches currentUser
+  //      return response.data.task_list;
+  //    } catch (error) {
+  //      console.log(error);
+  //      return false;
+  //    }
+  //  }
+
   async function fetchAllTasks() {
     try {
       const response = await axios.get("http://localhost:8000/tasks");
-      return response.data.task_list;
+
+      const storedData = localStorage.getItem("currentUser");
+      const currentUser = storedData ? JSON.parse(storedData) : "defaultValue";
+
+      // Apply a filter that matches the currentUser
+      const filteredTasks = response.data.task_list.filter(
+        (task) => task.user === currentUser
+      );
+      return filteredTasks;
     } catch (error) {
       console.log(error);
       return false;
     }
   }
+
   // added function to indicate complete if a task is complete
   function toggleComplete(index) {
     const updatedTasks = tasks.map((task, i) => {
@@ -127,9 +148,9 @@ function MyApp() {
 
   // Stores a task
   function updateTaskList(task) {
-    // TODO remove this
-    // This is used for debugging which one is the current user
-    console.log(currentUser);
+    const storedData = localStorage.getItem("currentUser");
+    const myVariable = storedData ? JSON.parse(storedData) : "defaultValue";
+    console.log("Current User: " + myVariable);
 
     makeTaskPostCall(task).then((result) => {
       if (result && result.status === 201) {
@@ -166,13 +187,16 @@ function MyApp() {
     }
   }
 
-  // TODO create a function that updates currentUser
+  // Updates current user
   function updateCurrentUser(credentialData) {
     try {
-      console.log(
-        "Current: " + currentUser + ", New: " + credentialData.username
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify(credentialData.username)
       );
-      setCurrentUser(credentialData.username);
+      const storedData = localStorage.getItem("currentUser");
+      const myVariable = storedData ? JSON.parse(storedData) : "defaultValue";
+      console.log("(After Setting) Current: " + myVariable);
       return true;
     } catch (error) {
       console.log(error);
@@ -188,7 +212,6 @@ function MyApp() {
       }
     });
 
-    // TODO check if there is a better way to implement this?
     // Updating Credentials
     fetchAllCredentials().then((result) => {
       if (result) {

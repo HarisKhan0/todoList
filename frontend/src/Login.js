@@ -23,11 +23,11 @@ function Login(props) {
   function submitLogin(event) {
     event.preventDefault();
     setLoginStatus("Logging in...");
-    props.updateCurrentUser(Credential);
     props
       .isCredentialValid(Credential)
       .then((isCredentialValid) => {
         if (isCredentialValid) {
+          props.updateCurrentUser(Credential);
           window.location.href = "http://localhost:3000/TaskList";
         } else {
           setLoginStatus("Invalid username or password.");

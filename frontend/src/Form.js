@@ -5,8 +5,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./Form.css";
 
 function Form(props) {
+  const storedData = localStorage.getItem("currentUser");
+  const currentUser = storedData ? JSON.parse(storedData) : "defaultValue";
+
   const [task, setTask] = useState({
-    user: "Filler User",
+    user: currentUser,
     task_name: "",
     task_description: "",
     days: "",
