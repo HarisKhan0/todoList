@@ -105,6 +105,7 @@ function TableBody(props) {
 }
 
 function TaskList(props) {
+  const currentDate = new Date();
   return (
     <div className="background-yellow">
       <div className="table-sizeing">
@@ -114,15 +115,18 @@ function TaskList(props) {
           <img src={UserpersonaLogo} alt="UserpersonaLogo" />
         </div>
         <div className="line" />
-        <Link to="/form">
-          <button className="button-spacing">Create New Task</button>
-        </Link>
-        <button
-          className="button-spacing"
-          onClick={() => (window.location.href = "/wview")}
-        >
-          Weekly View
-        </button>
+        <div className="wrap-image">
+          <Link to="/form">
+            <button className="button-spacing">Create New Task</button>
+          </Link>
+          <h1 className="main_view">{currentDate.toDateString()}</h1>
+          <button
+            className="button-spacing"
+            onClick={() => (window.location.href = "/wview")}
+          >
+            Weekly View
+          </button>
+        </div>
         <table>
           <TaskListHeader />
           <TableBody
