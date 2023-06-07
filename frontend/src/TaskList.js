@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./TaskList.css";
 import ListitLogo from "./ListitLogo.png";
+import UserpersonaLogo from "./Userpersonalogo.png";
 
 function TaskListHeader() {
   return (
@@ -107,15 +108,17 @@ function TaskList(props) {
   return (
     <div className="background-yellow">
       <div className="table-sizeing">
-        <div style={{ flexDirection: "column", display: "flex"}}>
+        <div className="wrap-image">
           <img src={ListitLogo} alt="Logo" />
           <h1 className="main_view"> MAIN VIEW</h1>
-          <Link to="/form">
-            <button>Create New Task</button>
-          </Link>
+          <img src={UserpersonaLogo} alt="UserpersonaLogo" />
         </div>
+        <div className="line" />
+        <Link to="/form">
+          <button className="button-spacing">Create New Task</button>
+        </Link>
         <button
-          className="buttonleft"
+          className="button-spacing"
           onClick={() => (window.location.href = "/wview")}
         >
           Weekly View
@@ -128,7 +131,6 @@ function TaskList(props) {
             toggleComplete={props.toggleComplete}
             updateUrgency={props.updateUrgency}
           />
-          
         </table>
       </div>
     </div>

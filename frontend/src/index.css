@@ -70,18 +70,6 @@ h1 {
   color: red;
 }
 
-.main_view {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family:'Varela Round', sans-serif; /* Specify the round font name */
-  font-size: 35px;
-  font-weight: normal;
-  text-align: center;
-  border-bottom: 5px solid #000000;
-  color: #000000;
-}
-
 
 .bold-black {
   font-weight: bold;
