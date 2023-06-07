@@ -67,10 +67,12 @@ TaskSchema.methods.calculatePriority = function () {
   const difficultyFactor = 1; // Adjust this factor to control the impact of difficulty rating
   const daysWeight = 0.5; // Adjust this weight to amplify the impact of remaining days
 
-  const priority = this.stress_rating * stressFactor + this.difficulty * difficultyFactor - remainingDays * daysWeight;
+  const priority =
+    this.stress_rating * stressFactor +
+    this.difficulty * difficultyFactor -
+    Math.abs(remainingDays * daysWeight);
   return priority;
 };
-
 
 TaskSchema.statics.sortPriority = function (callback) {
   return this.find({}).sort({ priority: -1 }).exec(callback);
