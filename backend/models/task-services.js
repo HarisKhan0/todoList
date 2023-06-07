@@ -35,7 +35,29 @@ async function deleteTaskById(id) {
   }
 }
 
+// Group tasks by due date
+async function groupTasksByDueDate() {
+  try {
+    return await taskModel.aggregate([
+      {
+        $group: {
+          _id: {
+            year: { $year: "$days" },
+            month: { $month: "$days" },
+            day: { $dayOfMonth: "$days" },
+          },
+          tasks: { $push: "$$ROOT" },
+        },
+      },
+    ]);
+  } catch (error) {
+    console.log(error);
+    return undefined;
+  }
+}
+
 exports.getTasks = getTasks;
 exports.findTaskById = findTaskById;
 exports.addTask = addTask;
 exports.deleteTaskById = deleteTaskById;
+exports.groupTasksByDueDate = groupTasksByDueDate;
