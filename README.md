@@ -69,5 +69,12 @@ npm install eslint-config-prettier eslint-plugin-prettier prettier --save-dev
 Step 4 -> Add this line in the file "package.json"
 "format": "prettier --write './\*_/_.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
 
-Command To run eslint:
-npx eslint <FileName.txt> --fix
+Commands To run eslint:
+
+- npx eslint <FileName.txt>
+- npx eslint <FileName.txt> --fix
+
+Commands To run prettier:
+
+- npx prettier <FileName.txt> --check
+- npx prettier <FileName.txt> --write
