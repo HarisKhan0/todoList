@@ -88,6 +88,22 @@ h1 {
   background-color: #eb3d2a;
 }
 
+.no-urgency select {
+  background-color: #f8f8f8;
+}
+
+.low-urgency select {
+  background-color: #f8f8f8;
+}
+
+.medium-urgency select {
+  background-color: #f8f8f8;
+}
+
+.high-urgency select {
+  background-color: #f8f8f8;
+}
+
 hr {
   box-sizing: content-box;
   /* 1 */
