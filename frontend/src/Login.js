@@ -50,43 +50,45 @@ function Login(props) {
   }
 
   return (
-    <div className="GrayRectangle">
-      <div className="ListItHeader">ListIt!</div>
-      <div className="usernamefield">
-        <label htmlFor="username">Username</label>
+    <div className="background-yellow">
+      <div className="GrayRectangle">
+        <div className="ListItHeader">ListIt!</div>
+        <div className="usernamefield">
+          <label htmlFor="username">Username</label>
+          <input
+            style={{ backgroundColor: "white" }}
+            type="text"
+            name="username"
+            id="username"
+            value={Credential.username}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="passwordfield">
+          <label htmlFor="password">Password</label>
+          <input
+            style={{ backgroundColor: "white" }}
+            type="password"
+            name="password"
+            id="password"
+            value={Credential.password}
+            onChange={handleChange}
+          />
+        </div>
         <input
-          style={{ backgroundColor: "white" }}
-          type="text"
-          name="username"
-          id="username"
-          value={Credential.username}
-          onChange={handleChange}
+          className="loginbutton"
+          type="button"
+          value="Login"
+          onClick={(event) => submitLogin(event)}
         />
-      </div>
-      <div className="passwordfield">
-        <label htmlFor="password">Password</label>
         <input
-          style={{ backgroundColor: "white" }}
-          type="password"
-          name="password"
-          id="password"
-          value={Credential.password}
-          onChange={handleChange}
+          className="passwordbutton"
+          type="button"
+          value="Create Account"
+          onClick={(event) => submitCreateAccount(event)}
         />
+        <p>{loginStatus}</p>
       </div>
-      <input
-        className="loginbutton"
-        type="button"
-        value="Login"
-        onClick={(event) => submitLogin(event)}
-      />
-      <input
-        className="passwordbutton"
-        type="button"
-        value="Create Account"
-        onClick={(event) => submitCreateAccount(event)}
-      />
-      <p>{loginStatus}</p>
     </div>
   );
 }
