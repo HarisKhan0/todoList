@@ -1,20 +1,20 @@
-Home {
-  padding: 20px;
+.Home {
+  padding: 2%;
 }
 
 .background-pink {
-	background-color: #D7AFC9;
-	height: 100vh;
-	width: 100vw;
-	overflow: auto; 
+  background-color: #D7AFC9;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto; 
 }
 
 .GrayRectangle {
   position: absolute;
-  width: 1000px;
-  height: 800px;
-  left: 358px;
-  top: 120px;
+  width: 50%;
+  height: 70%;
+  left: 25%;
+  top: 12%;
 
   background: #ffffc9;
 }
@@ -23,39 +23,39 @@ Home {
   position: absolute;
   font-family: "Inter";
   font-style: normal;
-  font-size: 100px;
-  line-height: 100px;
-  top: 100px;
+  font-size: 5vw;
+  line-height: 5vw;
+  top: 10%;
   right: 38%;
   color: #000000;
 }
 
 .loginbutton {
   position: absolute;
-  width: 350px;
-  height: 58px;
-  left: 100px;
-  top: 605px;
+  width: 38%;
+  height: 7%;
+  left: 10%;
+  top: 80%;
 }
 
 .passwordbutton {
   position: absolute;
-  width: 350px;
-  height: 58px;
-  left: 550px;
-  top: 605px;
+  width: 38%;
+  height: 7%;
+  left: 53%;
+  top: 80%;
 }
 
 .usernamefield {
   position: absolute;
-  width: 600px;
-  left: 208px;
-  top: 250px;
+  width: 60%;
+  left: 20%;
+  top: 30%;
 }
 
 .passwordfield {
   position: absolute;
-  width: 600px;
-  left: 208px;
-  top: 400px;
+  width: 60%;
+  left: 20%;
+  top: 50%;
 }
