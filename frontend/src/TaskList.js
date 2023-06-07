@@ -53,7 +53,7 @@ function TableBody(props) {
       props.updateUrgency(updatedTasks);
     };
     // Determine the CSS class based on urgency value
-    let urgencyClass = "";
+    let urgencyClass = "no-urgency";
     if (row.urgency === "low") {
       urgencyClass = "low-urgency";
     } else if (row.urgency === "medium") {
