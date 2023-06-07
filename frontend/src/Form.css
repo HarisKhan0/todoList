@@ -1,6 +1,14 @@
+body {
+  margin: 0; /* Reset default margin of the body */
+  background-color: #d7afc9 !important; /* Set the background color for the entire webpage */
+}
+
 form {
   max-width: 400px;
-  margin: 0 auto;
+  margin: 10px auto;
+  background-color: #ffffc9;
+  border-radius: 20px;
+  padding: 20px; /* Adds space inside the form */
 }
 
 label {
