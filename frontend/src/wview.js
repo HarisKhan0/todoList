@@ -55,6 +55,8 @@ const taskStyle = {
   textAlign: "left", // Align tasks to the left
   width: "100%", // Make tasks stretch to the width of the box
   boxSizing: "border-box", // Include padding within the width
+  flexDirection: "row",
+  flex: "1 0 auto",
 };
 
 const WeeklyViewCalendar = ({ taskData }) => {
