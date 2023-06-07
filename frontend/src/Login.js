@@ -45,7 +45,7 @@ function Login(props) {
   }
 
   return (
-    <div className="background-yellow">
+    <div className="background-pink">
       <div className="GrayRectangle">
         <div className="ListItHeader">ListIt!</div>
         <div className="usernamefield">

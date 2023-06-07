@@ -2,8 +2,8 @@ Home {
   padding: 20px;
 }
 
-.background-yellow {
-	background-color: #ffffc9;
+.background-pink {
+	background-color: #D7AFC9;
 	height: 100vh;
 	width: 100vw;
 	overflow: auto; 
@@ -16,7 +16,7 @@ Home {
   left: 358px;
   top: 120px;
 
-  background: #d9d9d9;
+  background: #ffffc9;
 }
 
 .ListItHeader {

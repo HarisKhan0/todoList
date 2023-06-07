@@ -17,7 +17,7 @@
   align-items: center;
 }
 
-.line {
+.line-padded {
   height: 5px;
   background-color: black;
   font-weight: bold;

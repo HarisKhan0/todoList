@@ -1,4 +1,13 @@
 import React from "react";
+import homepage from "./homepage.gif";
+
+const backgroundcolor = {
+  margin: "0 auto", // Center the calendar horizontally
+  height: "100vh", // Set height to 90% of the viewport height
+  width: "100vw", // Set width to 90% of the viewport width
+  overflow: "auto",
+  background: "#ffffc9",
+};
 
 const calendarStyle = {
   fontFamily: "Arial, sans-serif",
@@ -25,10 +34,11 @@ const dayStyle = {
   flex: "1",
   display: "flex",
   flexDirection: "column",
+  marginTop: "40px",
   marginBottom: "20px",
   padding: "10px",
   border: "1px solid #ccc",
-  backgroundColor: "#f5f5f5",
+  backgroundColor: "#D7AFC9",
   boxShadow: "0 0 5px rgba(0, 0, 0, 1)", // Add box shadow to create an outline
 };
 
@@ -75,37 +85,46 @@ const WeeklyViewCalendar = ({ taskData }) => {
   }
 
   return (
-    <div style={calendarStyle}>
-      <div style={headerStyle}>
-        <button onClick={prevWeek}>Previous Week</button>
-        <h1>
-          Week of {weekStart.toDateString()} - {weekEnd.toDateString()}
-        </h1>
-        <button onClick={nextWeek}>Next Week</button>
+    <div style={backgroundcolor}>
+      <div style={calendarStyle}>
+        <img
+          style={{ cursor: "pointer" }}
+          src={homepage}
+          alt="Take you back to homepage"
+          onClick={() => (window.location.href = "/TaskList")}
+        />
+        <div style={headerStyle}>
+          <button onClick={prevWeek}>Previous Week</button>
+          <h1>
+            Week of {weekStart.toDateString()} - {weekEnd.toDateString()}
+          </h1>
+          <button onClick={nextWeek}>Next Week</button>
+        </div>
+        <div className="line-padded" />
+        <ul style={weekStyle}>
+          {weekDays.map((day) => {
+            const dayTasks = taskData.filter(
+              (task) =>
+                new Date(task.days).toISOString().slice(0, 10) ===
+                day.toISOString().slice(0, 10)
+            );
+            return (
+              <li key={day.toDateString()} style={dayStyle}>
+                <strong style={dayTextStyle}>
+                  {day.toLocaleDateString(undefined, { weekday: "long" })}
+                </strong>
+                <ul>
+                  {dayTasks.map((task, index) => (
+                    <li key={index} style={taskStyle}>
+                      <strong>{task.task_name}</strong>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })}
+        </ul>
       </div>
-      <ul style={weekStyle}>
-        {weekDays.map((day) => {
-          const dayTasks = taskData.filter(
-            (task) =>
-              new Date(task.days).toISOString().slice(0, 10) ===
-              day.toISOString().slice(0, 10)
-          );
-          return (
-            <li key={day.toDateString()} style={dayStyle}>
-              <strong style={dayTextStyle}>
-                {day.toLocaleDateString(undefined, { weekday: "long" })}
-              </strong>
-              <ul>
-                {dayTasks.map((task, index) => (
-                  <li key={index} style={taskStyle}>
-                    <strong>{task.task_name}</strong>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          );
-        })}
-      </ul>
     </div>
   );
 };

@@ -161,3 +161,9 @@ calendarboxright {
 
   background: #eeeeee;
 }
+
+.line {
+  height: 5px;
+  background-color: black;
+  font-weight: bold;
+}
