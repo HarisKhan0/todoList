@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Login.css";
-// import { Link } from "react-router-dom";
 
 function Login(props) {
   // Login status object
@@ -27,8 +26,7 @@ function Login(props) {
       .isCredentialValid(Credential)
       .then((isCredentialValid) => {
         if (isCredentialValid) {
-          setLoginStatus("Login successful!");
-          // TODO store the username, used for creating new tasks, change to different page
+          props.updateCurrentUser(Credential);
           window.location.href = "http://localhost:3000/TaskList";
         } else {
           setLoginStatus("Invalid username or password.");
@@ -42,51 +40,50 @@ function Login(props) {
 
   function submitCreateAccount(event) {
     event.preventDefault();
-    setLoginStatus("Creating account...");
-    // TODO check if the username is unique
-
     setLoginStatus("Account created!");
     props.handleSubmitCredential(Credential);
   }
 
   return (
-    <div className="GrayRectangle">
-      <div className="ListIt">ListIt!</div>
-      <div className="username">
-        <label htmlFor="username">Username</label>
+    <div className="background-pink">
+      <div className="GrayRectangle">
+        <div className="ListItHeader">ListIt!</div>
+        <div className="usernamefield">
+          <label htmlFor="username">Username</label>
+          <input
+            style={{ backgroundColor: "white" }}
+            type="text"
+            name="username"
+            id="username"
+            value={Credential.username}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="passwordfield">
+          <label htmlFor="password">Password</label>
+          <input
+            style={{ backgroundColor: "white" }}
+            type="password"
+            name="password"
+            id="password"
+            value={Credential.password}
+            onChange={handleChange}
+          />
+        </div>
         <input
-          style={{ backgroundColor: "white" }}
-          type="text"
-          name="username"
-          id="username"
-          value={Credential.username}
-          onChange={handleChange}
+          className="loginbutton"
+          type="button"
+          value="Login"
+          onClick={(event) => submitLogin(event)}
         />
-      </div>
-      <div className="password">
-        <label htmlFor="password">Password</label>
         <input
-          style={{ backgroundColor: "white" }}
-          type="password"
-          name="password"
-          id="password"
-          value={Credential.password}
-          onChange={handleChange}
+          className="passwordbutton"
+          type="button"
+          value="Create Account"
+          onClick={(event) => submitCreateAccount(event)}
         />
+        <p>{loginStatus}</p>
       </div>
-      <input
-        className="buttontext1"
-        type="button"
-        value="Login"
-        onClick={(event) => submitLogin(event)}
-      />
-      <input
-        className="buttontext2"
-        type="button"
-        value="Create Account"
-        onClick={(event) => submitCreateAccount(event)}
-      />
-      <p>{loginStatus}</p>
     </div>
   );
 }

@@ -24,10 +24,9 @@ html {
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
-  
+
   /* 2 */
 }
-
 
 /* Sections
    ========================================================================== */
@@ -36,7 +35,6 @@ html {
  */
 body {
   margin: 0;
-  
 }
 
 /**
@@ -70,14 +68,13 @@ h1 {
   color: red;
 }
 
-
 .bold-black {
   font-weight: bold;
   color: black;
 }
 
 .no-urgency {
-  background-color: #f8f8f8;
+  background-color: #ffffc9;
 }
 
 .low-urgency {
@@ -90,6 +87,22 @@ h1 {
 
 .high-urgency {
   background-color: #eb3d2a;
+}
+
+.no-urgency select {
+  background-color: #f8f8f8 !important;
+}
+
+.low-urgency select {
+  background-color: #f8f8f8;
+}
+
+.medium-urgency select {
+  background-color: #f8f8f8;
+}
+
+.high-urgency select {
+  background-color: #f8f8f8;
 }
 
 hr {
@@ -133,8 +146,6 @@ abbr[title] {
   text-decoration: underline dotted;
   /* 2 */
 }
-
-
 
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
@@ -852,8 +863,8 @@ button:hover,
 [type="submit"]:hover,
 [type="reset"]:hover,
 [type="button"]:hover {
-  border: 1px solid #D7AFC9;
-  background: #D7AFC9;
+  border: 1px solid #d7afc9;
+  background: #d7afc9;
   color: #ffffff;
   text-decoration: none;
 }
@@ -1132,8 +1143,7 @@ tfoot th {
 }
 
 td {
-  border-bottom: 3px solid #D7AFC9;
-
+  border-bottom: 3px solid #d7afc9;
 }
 
 th,
