@@ -62,8 +62,15 @@ TaskSchema.methods.calculatePriority = function () {
   const dueTimestamp = this.days.getTime();
   const remainingTime = dueTimestamp - currentTimestamp.getTime();
   const remainingDays = Math.ceil(remainingTime / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
-  return this.difficulty + this.stress_rating - remainingDays;
+
+  const stressFactor = 1; // Adjust this factor to control the impact of stress rating
+  const difficultyFactor = 1; // Adjust this factor to control the impact of difficulty rating
+  const daysWeight = 0.5; // Adjust this weight to amplify the impact of remaining days
+
+  const priority = this.stress_rating * stressFactor + this.difficulty * difficultyFactor - remainingDays * daysWeight;
+  return priority;
 };
+
 
 TaskSchema.statics.sortPriority = function (callback) {
   return this.find({}).sort({ priority: -1 }).exec(callback);
