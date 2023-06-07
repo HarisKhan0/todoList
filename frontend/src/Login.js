@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Login.css";
-// import { Link } from "react-router-dom";
 
 function Login(props) {
   // Login status object
@@ -27,8 +26,7 @@ function Login(props) {
       .isCredentialValid(Credential)
       .then((isCredentialValid) => {
         if (isCredentialValid) {
-          setLoginStatus("Login successful!");
-          // TODO store the username, used for creating new tasks, change to different page
+          props.updateCurrentUser(Credential);
           window.location.href = "http://localhost:3000/TaskList";
         } else {
           setLoginStatus("Invalid username or password.");
@@ -42,9 +40,6 @@ function Login(props) {
 
   function submitCreateAccount(event) {
     event.preventDefault();
-    setLoginStatus("Creating account...");
-    // TODO check if the username is unique
-
     setLoginStatus("Account created!");
     props.handleSubmitCredential(Credential);
   }

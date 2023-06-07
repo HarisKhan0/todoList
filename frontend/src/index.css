@@ -24,8 +24,10 @@ html {
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
+  
   /* 2 */
 }
+
 
 /* Sections
    ========================================================================== */
@@ -34,6 +36,7 @@ html {
  */
 body {
   margin: 0;
+  
 }
 
 /**
@@ -67,6 +70,7 @@ h1 {
   color: red;
 }
 
+
 .bold-black {
   font-weight: bold;
   color: black;
@@ -86,6 +90,22 @@ h1 {
 
 .high-urgency {
   background-color: #eb3d2a;
+}
+
+.no-urgency select {
+  background-color: #f8f8f8;
+}
+
+.low-urgency select {
+  background-color: #f8f8f8;
+}
+
+.medium-urgency select {
+  background-color: #f8f8f8;
+}
+
+.high-urgency select {
+  background-color: #f8f8f8;
 }
 
 hr {
@@ -129,6 +149,8 @@ abbr[title] {
   text-decoration: underline dotted;
   /* 2 */
 }
+
+
 
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
@@ -822,9 +844,9 @@ button,
 [type="button"] {
   -webkit-appearance: none;
   display: inline-block;
-  border: 1px solid #0366ee;
+  border: 1px solid #94bcf0;
   border-radius: 4px;
-  background: #0366ee;
+  background: #799ac5;
   color: #ffffff;
   font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica,
@@ -846,8 +868,8 @@ button:hover,
 [type="submit"]:hover,
 [type="reset"]:hover,
 [type="button"]:hover {
-  border: 1px solid #0250bc;
-  background: #0250bc;
+  border: 1px solid #D7AFC9;
+  background: #D7AFC9;
   color: #ffffff;
   text-decoration: none;
 }
@@ -864,8 +886,8 @@ button:active,
 [type="reset"]:active,
 [type="button"]:focus,
 [type="button"]:active {
-  border: 1px solid #0250bc;
-  background: #0250bc;
+  border: 1px solid #94bcf0;
+  background: #94bcf0;
   color: #ffffff;
   text-decoration: none;
 }
@@ -1118,7 +1140,7 @@ table {
 }
 
 thead th {
-  border-bottom: 2px solid #dedede;
+  border-bottom: 5px solid #000000;
 }
 
 tfoot th {
@@ -1126,7 +1148,8 @@ tfoot th {
 }
 
 td {
-  border-bottom: 1px solid #dedede;
+  border-bottom: 3px solid #D7AFC9;
+
 }
 
 th,

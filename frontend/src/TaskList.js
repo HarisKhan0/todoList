@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./TaskList.css";
+import ListitLogo from "./ListitLogo.png";
+import UserpersonaLogo from "./Userpersonalogo.png";
 
 function TaskListHeader() {
   return (
@@ -9,8 +12,9 @@ function TaskListHeader() {
         <th>Description</th>
         <th>Due Date</th>
         <th>Time Remaining</th>
-        <th>Complete?</th>
+        <th>Status</th>
         <th>Urgency</th>
+        <th>Remove</th>
       </tr>
     </thead>
   );
@@ -35,6 +39,7 @@ function TableBody(props) {
     const overdueClassName = isOverdue ? "overdue" : "";
     const daysRemainingClassName =
       isToday || isOneDayRemaining ? "bold-black" : "";
+
     const handleUrgencyChange = (e) => {
       const updatedTasks = props.taskData.map((task, i) => {
         if (i === index) {
@@ -90,10 +95,8 @@ function TableBody(props) {
             <option value="high">High</option>
           </select>
         </td>
-        <td></td>
-
         <td>
-          <button onClick={() => props.removeTask(index)}>Remove Task</button>
+          <button onClick={() => props.removeTask(index)}>X</button>
         </td>
       </tr>
     );
@@ -103,26 +106,33 @@ function TableBody(props) {
 
 function TaskList(props) {
   return (
-    <div>
-      <h1 className="title"> Task list view </h1>
-      <button
-        className="buttonleft"
-        onClick={() => (window.location.href = "/wview")}
-      >
-        Weekly View
-      </button>
-      <table>
-        <TaskListHeader />
-        <TableBody
-          taskData={props.taskData}
-          removeTask={props.removeTask}
-          toggleComplete={props.toggleComplete}
-          updateUrgency={props.updateUrgency}
-        />
+    <div className="background-yellow">
+      <div className="table-sizeing">
+        <div className="wrap-image">
+          <img src={ListitLogo} alt="Logo" />
+          <h1 className="main_view"> MAIN VIEW</h1>
+          <img src={UserpersonaLogo} alt="UserpersonaLogo" />
+        </div>
+        <div className="line" />
         <Link to="/form">
-          <button>Create New Task</button>
+          <button className="button-spacing">Create New Task</button>
         </Link>
-      </table>
+        <button
+          className="button-spacing"
+          onClick={() => (window.location.href = "/wview")}
+        >
+          Weekly View
+        </button>
+        <table>
+          <TaskListHeader />
+          <TableBody
+            taskData={props.taskData}
+            removeTask={props.removeTask}
+            toggleComplete={props.toggleComplete}
+            updateUrgency={props.updateUrgency}
+          />
+        </table>
+      </div>
     </div>
   );
 }

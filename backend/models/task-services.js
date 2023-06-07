@@ -5,16 +5,6 @@ async function getTasks() {
   return await taskModel.find().sort({ priority: -1 });
 }
 
-// Return a task with id
-async function findTaskById(id) {
-  try {
-    return await taskModel.findTaskById(id);
-  } catch (error) {
-    console.log(error);
-    return undefined;
-  }
-}
-
 async function addTask(task) {
   try {
     const taskToAdd = new taskModel(task);
@@ -35,7 +25,28 @@ async function deleteTaskById(id) {
   }
 }
 
+// Group tasks by due date
+async function groupTasksByDueDate() {
+  try {
+    return await taskModel.aggregate([
+      {
+        $group: {
+          _id: {
+            year: { $year: "$days" },
+            month: { $month: "$days" },
+            day: { $dayOfMonth: "$days" },
+          },
+          tasks: { $push: "$$ROOT" },
+        },
+      },
+    ]);
+  } catch (error) {
+    console.log(error);
+    return undefined;
+  }
+}
+
 exports.getTasks = getTasks;
-exports.findTaskById = findTaskById;
 exports.addTask = addTask;
 exports.deleteTaskById = deleteTaskById;
+exports.groupTasksByDueDate = groupTasksByDueDate;

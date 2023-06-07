@@ -10,16 +10,6 @@ async function getCredentials() {
 //  return await credentialModel.find({ username: username });
 //}
 
-// Return a credential with id
-async function findCredentialById(id) {
-  try {
-    return await credentialModel.findCredentialById(id);
-  } catch (error) {
-    console.log(error);
-    return undefined;
-  }
-}
-
 // Stores a credential
 async function addCredential(credential) {
   try {
@@ -42,6 +32,5 @@ async function deleteCredentialById(id) {
 }
 
 exports.getCredentials = getCredentials;
-exports.findCredentialById = findCredentialById;
 exports.addCredential = addCredential;
 exports.deleteCredentialById = deleteCredentialById;
