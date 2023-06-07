@@ -158,13 +158,14 @@ function Form(props) {
         </div>
 
         <div className="button-container">
-          <input
-            type="button"
-            value="Add Task"
+          <button
+            className="button-spacing"
             onClick={(event) => submitForm(event)}
-          />
+          >
+            Add Task
+          </button>
           <Link to="/TaskList">
-            <button>View Todo List</button>
+            <button className="button-spacing">View Todo List</button>
           </Link>
         </div>
       </form>

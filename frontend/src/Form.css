@@ -44,15 +44,14 @@ input[type="range"] {
 .button-container input[type="button"],
 .button-container button {
   padding: 8px 16px;
-  background-color: #0366ee;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  border: 1px solid transparent;
 }
 
 .button-container button {
-  background-color: #0366ee;
   margin-left: 10px;
 }
 
