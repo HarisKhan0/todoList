@@ -39,7 +39,7 @@ Last updated: 06/07/23
 </tr>
 </thead>
 <tbody><tr>
-	<td class="file high" data-value="credential-services.js"><a href="credential-services.js.html">credential-services.js</td>
+	<td class="file high" data-value="credential-services.js"></td>
 	<td data-value="100" class="pic high">
 	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
 	</td>
@@ -54,7 +54,7 @@ Last updated: 06/07/23
 	</tr>
 
 <tr>
-	<td class="file high" data-value="credential.js"><a href="credential.js.html">credential.js</td>
+	<td class="file high" data-value="credential.js"></td>
 	<td data-value="100" class="pic high">
 	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
 	</td>
@@ -69,7 +69,7 @@ Last updated: 06/07/23
 	</tr>
 
 <tr>
-	<td class="file high" data-value="task-services.js"><a href="task-services.js.html">task-services.js</td>
+	<td class="file high" data-value="task-services.js"></td>
 	<td data-value="100" class="pic high">
 	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
 	</td>
@@ -84,7 +84,7 @@ Last updated: 06/07/23
 	</tr>
 
 <tr>
-	<td class="file high" data-value="task.js"><a href="task.js.html">task.js</td>
+	<td class="file high" data-value="task.js"></td>
 	<td data-value="100" class="pic high">
 	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
 	</td>
