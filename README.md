@@ -23,53 +23,83 @@ Last updated: 06/07/23
 ## Code Coverage
 
 <pre>
-  <table class="coverage-summary">
-  <thead>
-  <tr>
-    <th data-col="file" data-fmt="html" data-html="true" class="file">File</th>
-    <th data-col="pic" data-type="number" data-fmt="html" data-html="true" class="pic"></th>
-    <th data-col="statements" data-type="number" data-fmt="pct" class="pct">Statements</th>
-    <th data-col="statements_raw" data-type="number" data-fmt="html" class="abs"></th>
-    <th data-col="branches" data-type="number" data-fmt="pct" class="pct">Branches</th>
-    <th data-col="branches_raw" data-type="number" data-fmt="html" class="abs"></th>
-    <th data-col="functions" data-type="number" data-fmt="pct" class="pct">Functions</th>
-    <th data-col="functions_raw" data-type="number" data-fmt="html" class="abs"></th>
-    <th data-col="lines" data-type="number" data-fmt="pct" class="pct">Lines</th>
-    <th data-col="lines_raw" data-type="number" data-fmt="html" class="abs"></th>
-  </tr>
-  </thead>
-  <tbody><tr>
-    <td class="file high" data-value="models"><a href="models/index.html">models</a></td>
-    <td data-value="100" class="pic high">
-    <div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-    </td>
-    <td data-value="100" class="pct high">100%</td>
-    <td data-value="57" class="abs high">57/57</td>
-    <td data-value="100" class="pct high">100%</td>
-    <td data-value="0" class="abs high">0/0</td>
-    <td data-value="100" class="pct high">100%</td>
-    <td data-value="11" class="abs high">11/11</td>
-    <td data-value="100" class="pct high">100%</td>
-    <td data-value="57" class="abs high">57/57</td>
-    </tr>
+<table class="coverage-summary">
+<thead>
+<tr>
+   <th data-col="file" data-html="true" class="file">File</th>
+   <th data-col="pic" data-type="number" data-fmt="html" data-html="true" class="pic"></th>
+   <th data-col="statements" data-type="number" data-fmt="pct" class="pct">Statements</th>
+   <th data-col="statements_raw" data-type="number" data-fmt="html" class="abs"></th>
+   <th data-col="branches" data-type="number" data-fmt="pct" class="pct">Branches</th>
+   <th data-col="branches_raw" data-type="number" data-fmt="html" class="abs"></th>
+   <th data-col="functions" data-type="number" data-fmt="pct" class="pct">Functions</th>
+   <th data-col="functions_raw" data-type="number" data-fmt="html" class="abs"></th>
+   <th data-col="lines" data-type="number" data-fmt="pct" class="pct">Lines</th>
+   <th data-col="lines_raw" data-type="number" data-fmt="html" class="abs"></th>
+</tr>
+</thead>
+<tbody><tr>
+	<td class="file high" data-value="credential-services.js"><a href="credential-services.js.html">credential-services.js</a></td>
+	<td data-value="100" class="pic high">
+	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
+	</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="15" class="abs high">15/15</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="0" class="abs high">0/0</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="3" class="abs high">3/3</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="15" class="abs high">15/15</td>
+	</tr>
 
-  <tr>
-    <td class="file high" data-value="tests"><a href="tests/index.html">tests</a></td>
-    <td data-value="100" class="pic high">
-    <div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-    </td>
-    <td data-value="100" class="pct high">100%</td>
-    <td data-value="17" class="abs high">17/17</td>
-    <td data-value="100" class="pct high">100%</td>
-    <td data-value="0" class="abs high">0/0</td>
-    <td data-value="100" class="pct high">100%</td>
-    <td data-value="3" class="abs high">3/3</td>
-    <td data-value="100" class="pct high">100%</td>
-    <td data-value="17" class="abs high">17/17</td>
-    </tr>
+<tr>
+	<td class="file high" data-value="credential.js"><a href="credential.js.html">credential.js</a></td>
+	<td data-value="100" class="pic high">
+	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
+	</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="6" class="abs high">6/6</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="0" class="abs high">0/0</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="1" class="abs high">1/1</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="6" class="abs high">6/6</td>
+	</tr>
 
-  </tbody>
-  </table>
+<tr>
+	<td class="file high" data-value="task-services.js"><a href="task-services.js.html">task-services.js</a></td>
+	<td data-value="100" class="pic high">
+	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
+	</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="15" class="abs high">15/15</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="0" class="abs high">0/0</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="3" class="abs high">3/3</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="15" class="abs high">15/15</td>
+	</tr>
+
+<tr>
+	<td class="file high" data-value="task.js"><a href="task.js.html">task.js</a></td>
+	<td data-value="100" class="pic high">
+	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
+	</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="21" class="abs high">21/21</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="0" class="abs high">0/0</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="4" class="abs high">4/4</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="21" class="abs high">21/21</td>
+	</tr>
+
+</tbody>
+</table>
 </pre>
 
 Last generated: 06/07/2023 at 6:45PM
