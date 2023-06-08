@@ -23,74 +23,10 @@ Last updated: 06/07/23
 ## Code Coverage
 
 <pre>
-  <!doctype html>
-  <html lang="en">
-
-  <head>
-      <title>Code coverage report for All files</title>
-      <meta charset="utf-8" />
-      <link rel="stylesheet" href="prettify.css" />
-      <link rel="stylesheet" href="base.css" />
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <style type='text/css'>
-          .coverage-summary .sorter {
-              background-image: url(sort-arrow-sprite.png);
-          }
-      </style>
-  </head>
-      
-  <body>
-  <div class='wrapper'>
-      <div class='pad1'>
-          <h1>All files</h1>
-          <div class='clearfix'>
-              
-              <div class='fl pad1y space-right2'>
-                  <span class="strong">100% </span>
-                  <span class="quiet">Statements</span>
-                  <span class='fraction'>74/74</span>
-              </div>
-          
-              
-              <div class='fl pad1y space-right2'>
-                  <span class="strong">100% </span>
-                  <span class="quiet">Branches</span>
-                  <span class='fraction'>0/0</span>
-              </div>
-          
-              
-              <div class='fl pad1y space-right2'>
-                  <span class="strong">100% </span>
-                  <span class="quiet">Functions</span>
-                  <span class='fraction'>14/14</span>
-              </div>
-          
-              
-              <div class='fl pad1y space-right2'>
-                  <span class="strong">100% </span>
-                  <span class="quiet">Lines</span>
-                  <span class='fraction'>74/74</span>
-              </div>
-          
-              
-          </div>
-          <p class="quiet">
-              Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
-          </p>
-          <template id="filterTemplate">
-              <div class="quiet">
-                  Filter:
-                  <input oninput="onInput()" type="search" id="fileSearch">
-              </div>
-          </template>
-      </div>
-      <div class='status-line high'></div>
-      <div class="pad1">
   <table class="coverage-summary">
   <thead>
   <tr>
-    <th data-col="file" data-fmt="html" data-html="true" class="file">File</th>
+    <th data-col="file" data-fmt="html" data-html="false" class="file">File</th>
     <th data-col="pic" data-type="number" data-fmt="html" data-html="true" class="pic"></th>
     <th data-col="statements" data-type="number" data-fmt="pct" class="pct">Statements</th>
     <th data-col="statements_raw" data-type="number" data-fmt="html" class="abs"></th>
@@ -143,15 +79,6 @@ Last updated: 06/07/23
                   at 2023-06-08T01:45:46.519Z
               </div>
           <script src="prettify.js"></script>
-          <script>
-              window.onload = function () {
-                  prettyPrint();
-              };
-          </script>
-          <script src="sorter.js"></script>
-          <script src="block-navigation.js"></script>
-      </body>
-  </html>
 </pre>
 
 Last generated: 06/07/2023 at 6:45PM
