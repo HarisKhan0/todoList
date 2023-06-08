@@ -37,11 +37,9 @@ Last updated: 06/07/23
    <th data-col="lines_raw" data-type="number" data-fmt="html" class="abs"></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 	<td class="file high" data-value="credential-services.js">credential-services.js</td>
-	<td data-value="100" class="pic high">
-	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-	</td>
 	<td data-value="100" class="pct high">100%</td>
 	<td data-value="15" class="abs high">15/15</td>
 	<td data-value="100" class="pct high">100%</td>
@@ -50,13 +48,10 @@ Last updated: 06/07/23
 	<td data-value="3" class="abs high">3/3</td>
 	<td data-value="100" class="pct high">100%</td>
 	<td data-value="15" class="abs high">15/15</td>
-	</tr>
+</tr>
 
 <tr>
 	<td class="file high" data-value="credential.js">credential.js</td>
-	<td data-value="100" class="pic high">
-	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-	</td>
 	<td data-value="100" class="pct high">100%</td>
 	<td data-value="6" class="abs high">6/6</td>
 	<td data-value="100" class="pct high">100%</td>
@@ -65,13 +60,10 @@ Last updated: 06/07/23
 	<td data-value="1" class="abs high">1/1</td>
 	<td data-value="100" class="pct high">100%</td>
 	<td data-value="6" class="abs high">6/6</td>
-	</tr>
+</tr>
 
 <tr>
 	<td class="file high" data-value="task-services.js">task-services.js</td>
-	<td data-value="100" class="pic high">
-	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-	</td>
 	<td data-value="100" class="pct high">100%</td>
 	<td data-value="15" class="abs high">15/15</td>
 	<td data-value="100" class="pct high">100%</td>
@@ -80,13 +72,10 @@ Last updated: 06/07/23
 	<td data-value="3" class="abs high">3/3</td>
 	<td data-value="100" class="pct high">100%</td>
 	<td data-value="15" class="abs high">15/15</td>
-	</tr>
+</tr>
 
 <tr>
 	<td class="file high" data-value="task.js">task.js</td>
-	<td data-value="100" class="pic high">
-	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-	</td>
 	<td data-value="100" class="pct high">100%</td>
 	<td data-value="21" class="abs high">21/21</td>
 	<td data-value="100" class="pct high">100%</td>
@@ -95,10 +84,11 @@ Last updated: 06/07/23
 	<td data-value="4" class="abs high">4/4</td>
 	<td data-value="100" class="pct high">100%</td>
 	<td data-value="21" class="abs high">21/21</td>
-	</tr>
+</tr>
 
 </tbody>
 </table>
+
 </pre>
 
 Last generated: 06/07/2023 at 6:45PM
