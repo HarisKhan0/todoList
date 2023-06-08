@@ -8,7 +8,7 @@ ListIt is an intuitive todo list application for students and young professional
 
 ## UI Prototype
 
-Our intitial UI prototype produced on Figma can be found [here](https://www.figma.com/file/F2zLCdkTA1iBqbnejYWYgY/ListIt?type=design&node-id=0%3A1&t=TaABfoWTTAxYEwVC-1).
+[UI Prototype](https://www.figma.com/file/F2zLCdkTA1iBqbnejYWYgY/ListIt?type=design&node-id=0%3A1&t=TaABfoWTTAxYEwVC-1).
 
 Last updated: 06/06/23
 
@@ -51,15 +51,19 @@ Curly Braces: Curly braces on the same line (K&R style (OTBS))
 Alignment: tab
 
 Imports: absolute imports
-i.e.) import java.util.ArrayList
+
+```javascript
+import java.util.ArrayList //example
+```
 
 Function Naming Convention: lowerCamelCase()
 String Convention: double quotes (“)
 
 Commands for installing Linter (ESLint):
-npm init @eslint/config
 
-Commands for installing Style Checker:
+```bash
+npm init @eslint/config
+```
 
 Instructions for installing IDE instructons:
 Followed Canvas instructions for ESLint and then installed VSCode extenion locally.
