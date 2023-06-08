@@ -2,7 +2,7 @@
 
 ### Contributors: Sam Todd, Winton Gee, Hamza Aziz, Haris Khan, Bill Chan
 
-## Project Description:
+## Project Description
 
 ListIt is an intuitive todo list application for students and young professionals. The application has unique features like priority assignment for tasks, color coordination, and grouping settings. ListIt provides users with a form to create new items, a table view of their upcoming tasks, and a weekly view to more easily visualize upcoming deadlines. Unlike notion or the notes app, ListIt is focused around crafting a central user experience that is unique to each user and their respective tasks.
 
@@ -14,11 +14,31 @@ Last updated: 06/06/23
 
 ## Class Diagram
 
-[Include Link to Class Diagrams Wikipage here]
+[UML Class Diagram](https://github.com/HarisKhan0/todoList/wiki/UML-Class-Diagram)
+
+Last updated: 06/07/23
 
 ## Development Enviornment Setup
 
-### Style Guide:
+### React App Setup
+
+1. Clone the repository using the URL form the green "<>Code" button located at the top right of the page.
+
+2. Inside the backend directory, run the following command to install all required dependencies.
+
+```bash
+npm install
+```
+
+3. Inside the frontend directory, run the same command from step 2 to install all required dependencies.
+
+4. You can start the frontend or backend by running the following command in the corresponding directory.
+
+```bash
+npm start
+```
+
+### Style Guide
 
 Filenames: lower snake case
 
@@ -48,49 +68,68 @@ Followed Canvas instructions for ESLint and then installed VSCode extenion local
 
 Note: You will need to do this twice, for frontend and backend
 
-Step 1 -> Run this Command to install eslint (Use default options)
+1. Run this Command to install eslint (Use default options)
+
+```bash
 npm init @eslint/config
+```
 
-Step 2 -> Replace the content in the file ".eslintrc.js" with this:
+2. Replace the content in the file ".eslintrc.js" with this:
+
+```javascript
 module.exports = {
-"env": {
-"browser": true,
-"es2021": true,
-"jest": true,
-"node": true,
-},
-"extends": [
-"eslint:recommended",
-"plugin:react/recommended",
-"plugin:prettier/recommended"
-],
-"overrides": [
-],
-"parserOptions": {
-"ecmaVersion": "latest",
-"sourceType": "module"
-},
-"plugins": [
-"react"
-],
-"rules": {
-"react/prop-types": 0,
-"react/react-in-jsx-scope": "off"
-}
-}
+  env: {
+    browser: true,
+    es2021: true,
+    jest: true,
+    node: true,
+  },
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+  ],
+  overrides: [],
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+  },
+  plugins: ["react"],
+  rules: {
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": "off",
+  },
+};
+```
 
-Step 3 -> Run this command
+3. Run this command
+
+```bash
 npm install eslint-config-prettier eslint-plugin-prettier prettier --save-dev
+```
 
-Step 4 -> Add this line in the file "package.json"
+4. Add this line in the file "package.json"
+
+```json
 "format": "prettier --write './\*_/_.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+```
 
 Commands To run eslint:
 
-- npx eslint <FileName.txt>
-- npx eslint <FileName.txt> --fix
+```bash
+npx eslint <FileName.txt>
+```
+
+```bash
+npx eslint <FileName.txt> --fix
+```
 
 Commands To run prettier:
 
-- npx prettier <FileName.txt> --check
-- npx prettier <FileName.txt> --write
+```bash
+npx prettier <FileName.txt> --check
+```
+
+```bash
+npx prettier <FileName.txt> --write
+```
