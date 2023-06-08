@@ -27,7 +27,6 @@ Last updated: 06/07/23
 <thead>
 <tr>
    <th data-col="file" data-fmt="html" data-html="true" class="file">File</th>
-   <th data-col="pic" data-type="number" data-fmt="html" data-html="true" class="pic"></th>
    <th data-col="statements" data-type="number" data-fmt="pct" class="pct">Statements</th>
    <th data-col="statements_raw" data-type="number" data-fmt="html" class="abs"></th>
    <th data-col="branches" data-type="number" data-fmt="pct" class="pct">Branches</th>
