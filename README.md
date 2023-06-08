@@ -1,6 +1,8 @@
 # ListIt [![Node.js CI](https://github.com/HarisKhan0/todoList/actions/workflows/node.js.yml/badge.svg)](https://github.com/HarisKhan0/todoList/actions/workflows/node.js.yml)
 
-### Contributors: Sam Todd, Winton Gee, Hamza Aziz, Haris Khan, Bill Chan
+## Contributors: Sam Todd, Winton Gee, Hamza Aziz, Haris Khan, Bill Chan
+
+### Project Overview
 
 ## Project Description
 
@@ -18,9 +20,15 @@ Last updated: 06/06/23
 
 Last updated: 06/07/23
 
-## Development Enviornment Setup
+## Code Coverage
 
-### React App Setup
+[Coverage Report](./backend/coverage/lcov-report/index.html)
+
+Last generated: 06/07/2023 at 6:45PM
+
+### Development Enviornment Setup
+
+## React App Setup
 
 1. Clone the repository using the URL form the green "<>Code" button located at the top right of the page.
 
@@ -38,7 +46,7 @@ npm install
 npm start
 ```
 
-### Style Guide
+## Style Guide
 
 Filenames: lower snake case
 
