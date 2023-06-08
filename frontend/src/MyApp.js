@@ -16,7 +16,9 @@ function MyApp() {
   // Getting all tasks through backend
   async function fetchAllTasks() {
     try {
-      const response = await axios.get("http://localhost:8000/tasks");
+      const response = await axios.get(
+        "https://list-it.azurewebsites.net/tasks"
+      );
 
       const storedData = localStorage.getItem("currentUser");
       const currentUser = storedData ? JSON.parse(storedData) : "defaultValue";
@@ -53,7 +55,9 @@ function MyApp() {
   // Getting all credentials through backend
   async function fetchAllCredentials() {
     try {
-      const response = await axios.get("http://localhost:8000/credentials");
+      const response = await axios.get(
+        "https://list-it.azurewebsites.net/credentials"
+      );
       return response.data.credential_list;
     } catch (error) {
       console.log(error);
@@ -64,7 +68,10 @@ function MyApp() {
   // Adding a task through backend
   async function makeTaskPostCall(task) {
     try {
-      const response = await axios.post("http://localhost:8000/tasks", task);
+      const response = await axios.post(
+        "https://list-it.azurewebsites.net/tasks",
+        task
+      );
       return response;
     } catch (error) {
       console.log(error);
@@ -76,7 +83,7 @@ function MyApp() {
   async function makeCredentialPostCall(credential) {
     try {
       const response = await axios.post(
-        "http://localhost:8000/credentials",
+        "https://list-it.azurewebsites.net/credentials",
         credential
       );
       return response;
@@ -89,7 +96,9 @@ function MyApp() {
   // Delete a task through backend
   async function makeTaskDeleteCall(_id) {
     try {
-      const response = await axios.delete(`http://localhost:8000/tasks/${_id}`);
+      const response = await axios.delete(
+        `https://list-it.azurewebsites.net/tasks/${_id}`
+      );
       return response;
     } catch (error) {
       console.log(error);
