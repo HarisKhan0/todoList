@@ -26,7 +26,7 @@ Last updated: 06/07/23
 <table class="coverage-summary">
 <thead>
 <tr>
-   <th data-col="file" data-html="true" class="file">File</th>
+   <th data-col="file" data-fmt="html" data-html="true" class="file">File</th>
    <th data-col="pic" data-type="number" data-fmt="html" data-html="true" class="pic"></th>
    <th data-col="statements" data-type="number" data-fmt="pct" class="pct">Statements</th>
    <th data-col="statements_raw" data-type="number" data-fmt="html" class="abs"></th>
@@ -39,7 +39,7 @@ Last updated: 06/07/23
 </tr>
 </thead>
 <tbody><tr>
-	<td class="file high" data-value="credential-services.js"></td>
+	<td class="file high" data-value="credential-services.js">credential-services.js</td>
 	<td data-value="100" class="pic high">
 	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
 	</td>
@@ -54,7 +54,7 @@ Last updated: 06/07/23
 	</tr>
 
 <tr>
-	<td class="file high" data-value="credential.js"></td>
+	<td class="file high" data-value="credential.js">credential.js</td>
 	<td data-value="100" class="pic high">
 	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
 	</td>
@@ -69,7 +69,7 @@ Last updated: 06/07/23
 	</tr>
 
 <tr>
-	<td class="file high" data-value="task-services.js"></td>
+	<td class="file high" data-value="task-services.js">task-services.js</td>
 	<td data-value="100" class="pic high">
 	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
 	</td>
@@ -84,7 +84,7 @@ Last updated: 06/07/23
 	</tr>
 
 <tr>
-	<td class="file high" data-value="task.js"></td>
+	<td class="file high" data-value="task.js">task.js</td>
 	<td data-value="100" class="pic high">
 	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
 	</td>
